@@ -1,0 +1,11 @@
+body {
+    height: 100%;
+    width: 100%;
+    display: grid;
+}
+
+h1 {
+    font-size: 34px;
+    margin: auto;
+    font-family: sans-serif;
+}
