@@ -1,125 +1,86 @@
-let invoice = JSON.parse(`{
-    "detail": {
-      "invoice_number": "#12345",
-      "reference": "deal-ref",
-      "currency_code": "USD",
-      "note": "Thank you for your business.",
-      "term": "No refunds after 30 days.",
-      "memo": "This is a long contract",
-      "payment_term": {
-        "term_type": "NET_10"
-      }
-    },
-    "invoicer": {
-      "name": {
-        "given_name": "Vikas Chandra",
-        "surname": "Tiwari"
-      },
-      "address": {
-        "address_line_1": "1234 First Street",
-        "admin_area_2": "Anytown",
-        "admin_area_1": "UP",
-        "postal_code": "211006",
-        "country_code": "IN"
-      },
-      "phones": [{
-        "country_code": "+91",
-        "national_number": "4085551234",
-        "phone_type": "MOBILE"
-      }],
-      "website": "my-krok-tutor.github.io/index.html",
-      "tax_id": "ABcNkWSfb5ICTt73nD3QON1fnnpgNKBy- Jb5SeuGj185MNNw6g",
-      "logo_url": "https://example.com/logo.png",
-      "additional_notes": "2-4"
-    },
-    "primary_recipients": [{
-      "billing_info": {
-        "name": {
-          "given_name": "Vikas Chandra",
-          "surname": "Tiwari"
-        },
-        "address": {
-          "address_line_1": "1234 Main Street",
-          "admin_area_2": "Anytown",
-          "admin_area_1": "CA",
-          "postal_code": "98765",
-          "country_code": "US"
-        },
-        "email_address": "my.krok.tutor@gmail.com",
-        "phones": [{
-          "country_code": "+91",
-          "national_number": "4884551234",
-          "phone_type": "MOBILE"
-        }],
-        "additional_info_value": "add-info"
-      },
-      "shipping_info": {
-        "name": {
-          "given_name": "Vikas Chandra",
-          "surname": "Tiwari"
-        },
-        "address": {
-          "address_line_1": "1234 Main Street",
-          "admin_area_2": "Anytown",
-          "admin_area_1": "CA",
-          "postal_code": "98765",
-          "country_code": "IN"
-        }
-      }
-    }],
-    "items": [{
-      "name": "KROK Courses",
-      "description": "KROK preparation courses for Indian students.",
+let invoice = JSON.parse(`Джули, [30.04.21 19:02]
+{
+  "items": [
+    {
+      "name": "KROK course",
+      "description": "Online KROK video course with themes, schemes and notes. Tests control of each theme added.",
       "quantity": "1",
       "unit_amount": {
         "currency_code": "USD",
         "value": "90.00"
       },
-      "tax": {
-        "name": "Sales Tax",
-        "percent": "0.00"
-      },
-      "discount": {
-        "percent": "5"
-      },
       "unit_of_measure": "QUANTITY"
-    }],
-    "configuration": {
-      "partial_payment": {
-        "allow_partial_payment": true,
-        "minimum_amount_due": {
-          "currency_code": "USD",
-          "value": "90.00"
-        }
-      },
-      "allow_tip": true,
-      "tax_calculated_after_discount": true,
-      "tax_inclusive": false
+    }
+  ],
+  "detail": {
+    "invoice_number": "#123",
+    "invoice_date": "2018-11-12",
+    "currency_code": "USD",
+    "note": "Thank you for your payment.",
+    "term": "No refunds after 24 hours.",
+    "payment_term": {
+      "term_type": "DUE_ON_DATE_SPECIFIED",
+      "due_date": "2018-05-15"
+    }
+  },
+  "invoicer": {
+    "name": {
+      "given_name": "Vikas Chandra",
+      "surname": "Tiwari"
     },
-    "amount": {
-      "breakdown": {
-        "custom": {
-          "label": "Packing Charges",
-          "amount": {
-            "currency_code": "USD",
-            "value": "10.00"
-          }
+    "address": {
+      "address_line_1": "208b, Alopibagh",
+      "address_line_2": "Sohabatiya Bagh",
+      "admin_area_2": "Prayagraj",
+      "admin_area_1": "Uttar Pradesh",
+      "postal_code": "211006",
+      "country_code": "IN"
+    },
+    "email_address": "my.krok.tutor@gmail.com",
+    "phones": [
+      {
+        "country_code": "+91",
+        "national_number": "8172965339",
+        "phone_type": "MOBILE"
+      }
+    ],
+    "website": "https://my-krok-tutor.github.io/",
+    "logo_url": "https://example.com/logo.PNG"
+  },
+  "primary_recipients": [
+    {
+      "billing_info": {
+        "name": {
+          "given_name": "Stephanie",
+          "surname": "Meyers"
         },
-        "shipping": {
-          "amount": {
-            "currency_code": "USD",
-            "value": "10.00"
-          },
-          "tax": {
-            "name": "Sales Tax",
-            "percent": "0.00"
+        "email_address": "bill-me@example.com",
+        "phones": [
+          {
+            "country_code": "001",
+            "national_number": "4884551234",
+            "phone_type": "MOBILE"
           }
-        },
-        "discount": {
-          "invoice_discount": {
-            "percent": "5"
-          }
-        }
+        ]
       }
     }
-  }`);
+  ],
+  "configuration": {
+    "partial_payment": {
+      "allow_partial_payment": false,
+      "minimum_amount_due": {
+        "currency_code": "USD",
+        "value": "20.00"
+      }
+    },
+    "allow_tip": true,
+    "tax_calculated_after_discount": true,
+    "tax_inclusive": true,
+    "template_id": "TEMP-19V05281TU309413B"
+  },
+  "amount": {
+    "value": "90",
+    "currency_code": "USD",
+    "breakdown": {}
+  }
+}`);
