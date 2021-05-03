@@ -30,6 +30,20 @@
   <div id='map' style="height: 400px;"></div>
   <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBKqO5q1O0TB--X0mt-e1bep0jeppC8PYw&callback=initMap&libraries=&v=weekly'></script>
   <h1>Hello on My KROK tutor index!</h1> 
+  <input type='radio' name='modeRadio' id='novaposhta'>Nova poshta Warehouse</input>
+  <input type='radio' name='modeRadio' id='address'>Carier to home</input>
+  <select id='citySelect'></select>
   <button onclick="getNextNumber()">Click me</button>
+  <script>
+    document.getElementById('novaposhta').addEventListener('click', function(){
+        mode = MAPMODE.NOVA_POSHTA;
+        initMap();
+    });
+    document.getElementById('address').addEventListener('click', function(){
+        mode = MAPMODE.ADDRESS;
+        initMap();
+    });
+    fillSelect(document.getElementById('citySelect'));
+  </script>
 </body>
 </html>
