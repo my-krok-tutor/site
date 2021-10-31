@@ -11,6 +11,28 @@
 </head>
 
 <body>
-  
+    <script type="text/javascript">
+      let currentPresenterArray = [];
+      let modulesArray = [];
+      let tablesArray = [];
+
+
+      function coreSignalHandler(signal, mode = ''){
+            console.log(signal + ' ' + mode);
+            progressToUi('Loading conents...');
+            switch(signal){
+                case firebaseApi.Signals.loggedIn:
+                    break;
+                case firebaseApi.Signals.presentersEmpty:
+                    break;
+                case firebaseApi.Signals.presentersLoaded:
+                    break;
+                case firebaseApi.Signals.tablesLoaded:
+                    break;
+                case firebaseApi.Signals.modulesLoaded:
+                    break;
+            }
+        }
+    </script>
 </body>
 </html>

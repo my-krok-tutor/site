@@ -17,13 +17,12 @@ class Presenter{
     /**
      * default constructor.
      * UNTOUCHABLE!
-     * @param {Object} unit - unit object for techical targets
-     * @param {Object} fork - fork object for techical targets
+     * @param {string} fork_unitId - unique address of unit for technical targets
      */
-    constructor(unit, fork){
-        this.unitId = unit.replace(/ /g, 'ø');
-        this.forkId = fork.replace(/ /g, 'ø');
-        this.fork_unitId = this.unitId + '@' + this.forkId;
+    constructor(fork_unitId){
+        this.unitId = fork_unitId.split('@')[0];
+        this.forkId = fork_unitId.split('@')[1];
+        this.fork_unitId = fork_unitId;
         this.presenterId = '';
         this.presenterType = '';
         this.presenterProps = {};
@@ -102,7 +101,7 @@ class Presenter{
      * @return {Object} abstract presenter for manipulating from main file
      */
     static Decode(presenterId, record){
-        const presenter = new Presenter(record.unitId, record.forkId);
+        const presenter = new Presenter(record.fork_unitId);
         presenter.presenterId = presenterId;
         presenter.presenterType = record.presenterType;
         presenter.presenterProps = JSON.parse(record.presenterProps);
