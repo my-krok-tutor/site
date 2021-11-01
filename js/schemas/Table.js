@@ -1,5 +1,8 @@
 class Table{
 
+    /**
+     * util constants of yaml. UNTOUCHABLE!
+     */
     static BucketInitial = '!';
     static ModuleInitial = '    ?';
     static UnitInitial = '        +';
@@ -8,24 +11,29 @@ class Table{
     static LinkInitial = '*';
 
 
+    /**
+     * constructor of Table - abstraction representing whole sute contents in one system. Contains table - navigation structure
+     * UNTOUCHABLE!
+     * @param {string} tableName - unique table name, not representing in UI!
+     */
     constructor(tableName){
         this.tableName = tableName;
-        this.tableId = tableName.replace(/ /g, 'ø');
         this.links = [
             {text: '', url: ''},
             {text: '', url: ''},
             {text: '', url: ''}
         ];
         this.yaml = '';
-        this.table = [
-            [null, null, null],
-            [null, null, null],
-            [null, null, null],
-            [null, null, null],
-            [null, null, null]
-        ];
+        this.modules = [];
     }
-
+    
+    /**
+     * function for decoding firebase table item @see FireBaseAPI.readAllTables()
+     * UNTOUCHABLE!
+     * @param {string} tableId - unique address of table for technical targets
+     * @param {Object} record - firebase transport json
+     * @return {Object} abstract table for manipulating from main file
+     */
     static Decode(tableId, record){
         const tableName = tableId.replace(/ø/g, ' ');
         const table = new Table(tableName);
@@ -35,8 +43,13 @@ class Table{
         return table;
     }
 
-    static YamlToObjects(yaml, tableOut){
-        const table = [
+    /**
+     * internal util function for parsing yaml for current module
+     * @param {string} yaml - encoded in proprietary format string, containing all data about table
+     * @param {Object} table - navigation abstraction
+     */
+    static YamlToObjects(yaml, table){
+        const modules = [
             [null, null, null],
             [null, null, null],
             [null, null, null],
@@ -55,22 +68,22 @@ class Table{
                 const cells = lines[i].replace(Table.TableInitial, '').replace(Table.TablePInitial, '').split('|');
                 for(let column = 0; column < cells.length; column++){
                     if(cells[column] != '' && cells[column] != '_'){
-                        if(table[row][column] == null){
-                            table[row][column] = {
+                        if(modules[row][column] == null){
+                            modules[row][column] = {
                                 text: "text",
                                 svg: "svg"
                             };
                         }
                         if(lines[i].startsWith(Table.TableInitial)){
-                            table[row][column].text = cells[column];
+                            modules[row][column].text = cells[column];
                         }
                         else if(lines[i].startsWith(Table.TablePInitial)){
-                            table[row][column].svg = cells[column];
+                            modules[row][column].svg = cells[column];
                         }
                     }
                 }
                 row++;
-                if(row == table.length){
+                if(row == modules.length){
                     row = 0;
                 }
             }
@@ -86,7 +99,14 @@ class Table{
                 }
             }
         }
-        tableOut.table = table;
-        tableOut.links = links;
+        for(let i = 0 ; i < modules.length; i++){
+            for(let j = 0 ; j < modules[i].length; j++){
+                const cell = modules[i][j];
+                if(cell.text != 'text' && cell.svg != 'svg'){
+                    table.modules.push(new Module(cell.text, cell.svg, yaml));
+                }
+            }
+        }
+        table.links = links;
     }
 }

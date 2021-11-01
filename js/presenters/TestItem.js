@@ -14,7 +14,7 @@ class TestItem {
         card.classList.add('test_item_card');
         const task = document.createElement('p');
         const classTask = ['par__text', 'par__textStyle_n', 'par__textAlign_jf', 'par__size_m'];
-        task.classList.add(...TestItem);
+        task.classList.add(...classTask);
         task.style.color = '#000'; //modifiable
         task.innerText = props.task;
         card.append(task);
