@@ -19,6 +19,7 @@ class FireBaseAPI {
 
     /**
      * constructor for initialize firebase libs, on success calls @see coreSignalHandler with signal @see Signals.loggedIn
+     * MUST BE CALLED FIRST
      */
     constructor() {
         this.firebaseConfigDamirkut = {
@@ -43,38 +44,22 @@ class FireBaseAPI {
             })
     }
 
-    readAllModules() {
-        const ref = this.realdatabase.ref('modules');
-        ref.get().then((snapshot) => {
-            if (snapshot.exists()) {
-                const modulesArrayLocal = [];
-                for (const moduleId in snapshot.val()) {
-                    modulesArrayLocal.push(Module.Decode(moduleId, snapshot.val()[moduleId]));
-                }
-                modulesArray = Module.reDecodeModules(forkUnitHolder, modulesArrayLocal);
-            }
-            else {
-                modulesArray = Module.reDecodeModules(forkUnitHolder, null);
-            }
-            coreSignalHandler(this.Signals.modulesLoaded);
-        }).catch((error) => {
-            console.log(error);
-            coreSignalHandler(this.Signals.modulesFailed);
-        })
-    }
-
-    readAllTables() {
+    /**
+     * function to get tables of forks an units, on success return @see navigationTable and calls @see coreSignalHandler with signal @see Signals.tablesLoaded
+     * MUST BE CALLED SECOND
+     * @param {string} target - tag to select needed table from all tables
+     */
+    readAllTables(target) {
         const ref = this.realdatabase.ref('tables');
         ref.get().then((snapshot) => {
             if (snapshot.exists()) {
-                const tablesArrayLocal = [];
                 for (const tableId in snapshot.val()) {
-                    tablesArrayLocal.push(Table.Decode(tableId, snapshot.val()[tableId]));
+                    const table = Table.Decode(tableId, snapshot.val()[tableId]);
+                    if(table.tableName == target){
+                        navigationTable = table;
+                        break;
+                    }
                 }
-                tablesArray = tablesArrayLocal;
-            }
-            else {
-                tablesArray = [];
             }
             coreSignalHandler(this.Signals.tablesLoaded);
         }).catch((error) => {
@@ -85,11 +70,10 @@ class FireBaseAPI {
 
     /**
      * function to get presenter of target unit and target fork, on success fills @see currentPresenterArray and calls @see coreSignalHandler with signal @see Signals.presentersLoaded
-     * @param {string} fork - fork name, got from navigation item click
-     * @param {string} unit - unit name, got from navigation item click
+     * @param {string} fork_unitId - unique unit address got from navigation item click
+     * CAN BE CALLED IN ANYTIME
      */
-    readPresenters(fork, unit) {
-        const fork_unitId = unit.replace(/ /g, 'ø') + '@' + fork.replace(/ /g, 'ø');
+    readPresenters(fork_unitId) {
         const ref = this.realdatabase.ref('presenters').orderByChild('fork_unitId').equalTo(fork_unitId);
         ref.get().then((snapshot) => {
             if (snapshot.exists()) {
@@ -117,5 +101,4 @@ class FireBaseAPI {
             coreSignalHandler(this.Signals.presentersFailed);
         })
     }
-
 }

@@ -13,23 +13,29 @@
 <body>
     <script type="text/javascript">
       let currentPresenterArray = [];
-      let modulesArray = [];
-      let tablesArray = [];
+      let navigationTable = null;
+      
+      const firebaseApi = new FireBaseAPI();
+      const target = 'Site';
+      const rootList = document.getElementById('rootList');
 
-
-      function coreSignalHandler(signal, mode = ''){
-            console.log(signal + ' ' + mode);
-            progressToUi('Loading conents...');
+      /**
+       * firebase calls handler to synchronise flows from firebase queries and main flow
+       * @param {string} signal - string to indetify the firebase event type
+       */
+      function coreSignalHandler(signal){
             switch(signal){
                 case firebaseApi.Signals.loggedIn:
+                    firebaseApi.readAllTables(target);
                     break;
                 case firebaseApi.Signals.presentersEmpty:
                     break;
                 case firebaseApi.Signals.presentersLoaded:
+                    //optionnaly hide loading animaion
+                    Presenter.ReDraw(rootList, currentPresenterArray); //draw current presenters to screen
                     break;
                 case firebaseApi.Signals.tablesLoaded:
-                    break;
-                case firebaseApi.Signals.modulesLoaded:
+                    //time to draw navigationTable into navigation element in DOM
                     break;
             }
         }
