@@ -102,7 +102,7 @@ class Table{
         for(let i = 0 ; i < modules.length; i++){
             for(let j = 0 ; j < modules[i].length; j++){
                 const cell = modules[i][j];
-                if(cell.text != 'text' && cell.svg != 'svg'){
+                if(cell != null){
                     table.modules.push(new Module(cell.text, cell.svg, yaml));
                 }
             }

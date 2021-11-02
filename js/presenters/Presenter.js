@@ -43,7 +43,7 @@ class Presenter{
             rootList.removeChild(rootList.lastChild);
         }
         for(let i = 0; i < presenters.length; i++){
-            presenters[i].DrawPresenter(i);
+            presenters[i].DrawPresenter(i, rootList);
         }
     }
 

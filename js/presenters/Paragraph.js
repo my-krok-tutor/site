@@ -1,4 +1,11 @@
 class Paragraph {
+
+    static TextList = {
+        ol: 'ol',
+        nl: 'nl',
+        ul: 'ul'
+    }
+
     /**
      * special interface for drawing any Paragraph from main file
      * UNTOUCHABLE! except "modifiable"

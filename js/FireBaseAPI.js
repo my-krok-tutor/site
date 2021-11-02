@@ -32,7 +32,6 @@ class FireBaseAPI {
             appId: "1:282306699058:web:7a1fded73750a55b8d012b"
         };
         firebase.initializeApp(this.firebaseConfigDamirkut);
-        this.firestore = firebase.firestore();
         this.realdatabase = firebase.database();
         firebase.auth().signInWithEmailAndPassword('damirkut@gmail.com', 'PaSsWoRd2021')
             .then((userCredential) => {
@@ -56,6 +55,9 @@ class FireBaseAPI {
                 for (const tableId in snapshot.val()) {
                     const table = Table.Decode(tableId, snapshot.val()[tableId]);
                     if(table.tableName == target){
+                        delete table.yaml;
+                        delete table.tableId;
+                        delete table.tableName;
                         navigationTable = table;
                         break;
                     }
