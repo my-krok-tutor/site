@@ -1,0 +1,45 @@
+body {
+    background-color: #373737 !important;
+}
+
+[id^='presenterM'] {
+    background-color: #373737 !important;
+    color: white;
+}
+.par__color_Black {
+    color: white;
+}
+.infocard__color_Blue_Grey {
+    background-color: #696969;
+}
+.infocard__color_Blue_Grey {
+    color: #ffffff;
+}
+.par__color_Light_Blue {
+    color: white;
+}
+.infocard__color_Green {
+    color: #ffffff;
+    background-color: #6b7b6c;
+}
+.test_item_card {
+    background-color: #5b5b5b;
+}
+.ans__correct {
+    background-color: #8aa18b;
+}
+.par__color_Green {
+    color: #ffffff;
+}
+.infocard__color_Orange {
+    background-color: #4d3d30;
+}
+.par__text {
+    color: #ffffff !important;
+}
+.ans__wrong {
+    color: #d3a12f !important;
+}
+.infocard__color_Orange {
+    color: #e94c25;
+}

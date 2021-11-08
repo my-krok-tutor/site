@@ -1,91 +1,124 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 
-  <title>My KROK Tutor index</title>
-  <meta name="description" content="My KROK Tutor index">
-  <meta name="author" content="My KROK Tutor">
+    <title>My KROK Tutor index</title>
+    <meta name="description" content="My KROK Tutor index">
+    <meta name="author" content="My KROK Tutor">
 
-  <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-database-compat.js"></script>
 
-  <script src="js/FireBaseAPI.js"></script>
-  <script src="js/schemas/Module.js"></script>
-  <script src="js/schemas/Table.js"></script>
+    <script src="js/FireBaseAPI.js"></script>
+    <script src="js/schemas/Module.js"></script>
+    <script src="js/schemas/Table.js"></script>
 
-  <script src="js/presenters/Presenter.js"></script>
-  <script src="js/presenters/FileP.js"></script>
-  <script src="js/presenters/ImageP.js"></script>
-  <script src="js/presenters/InfoCard.js"></script>
-  <script src="js/presenters/LinkP.js"></script>
-  <script src="js/presenters/Paragraph.js"></script>
-  <script src="js/presenters/TestItem.js"></script>
-  <script src="js/presenters/VideoP.js"></script>
-  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="css/style.css">
+    <script src="js/presenters/Presenter.js"></script>
+    <script src="js/presenters/FileP.js"></script>
+    <script src="js/presenters/ImageP.js"></script>
+    <script src="js/presenters/InfoCard.js"></script>
+    <script src="js/presenters/LinkP.js"></script>
+    <script src="js/presenters/Paragraph.js"></script>
+    <script src="js/presenters/TestItem.js"></script>
+    <script src="js/presenters/VideoP.js"></script>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div id='rootList'>
-
-    </div>
-    <script type="text/javascript">
-      let currentPresenterArray = [];
-      let navigationTable = null;
-
-      const target = 'Site';
-      
-      const firebaseApi = new FireBaseAPI();
-
-      document.addEventListener('DOMContentLoaded', () => {
-            document.cookie = 'SameSite=None';
-            document.cookie = 'Secure=true';
-            const tag = document.createElement('script');
-            tag.src = "https://www.youtube.com/iframe_api";
-            const firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        });
-
-      /**
-       * firebase calls handler to synchronise flows from firebase queries and main flow
-       * @param {string} signal - string to indetify the firebase event type
-       */
-      function coreSignalHandler(signal){
-            switch(signal){
-                case firebaseApi.Signals.loggedIn:
-                    firebaseApi.readAllTables(target);
-                    break;
-                case firebaseApi.Signals.presentersEmpty:
-                    break;
-                case firebaseApi.Signals.presentersLoaded:
-                    //optionnaly hide loading animaion
-                    const rootList = document.getElementById('rootList');
-                    Presenter.ReDraw(rootList, currentPresenterArray); //draw current presenters to screen
-                    break;
-                case firebaseApi.Signals.tablesLoaded:
-                    /*console.log(navigationTable);
-                    for(const module of navigationTable.modules){
-                        //create fork item view
-                        forkItemView.innerText = module.forkName;
-                        //accordeon
-                        for(const unit of module.list){
-                            //create unit item view
-                            unitItemView.innerText = unit.unitName;
-                            unitItemView.addEventListener('click', () => {
-                                //animation
-                                firebaseApi.readPresenters(unit.fork_unitId);
-                            });
+    <main class='main'>
+        <div class="sidebar">
+            <button class="btn-theme">Темная тема</button>
+        </div>
+        <div id='rootList'></div>
+        <main>
+            <script type="text/javascript">
+                (function () {
+                    let i = 1;
+                    document.querySelector('.btn-theme').addEventListener('click', (e) => {
+                        if (i % 2) {
+                            const link = document.createElement('link');
+                            link.setAttribute('href', 'dark-theme.css');
+                            link.setAttribute('rel', 'stylesheet');
+                            document.head.append(link)
+                            e.target.textContent = 'Светлая тема'
+                            i++
+                        } else {
+                            document.querySelector('link:last-child').remove();
+                            e.target.textContent = 'Темная тема'
+                            i++
                         }
-                    }*/
-                    //time to draw navigationTable into navigation element in DOM
-                    break;
-            }
-        }
-    </script>
+                    })
+                })()
+                let currentPresenterArray = [];
+                let navigationTable = null;
+
+                const target = 'Test table';
+
+                const firebaseApi = new FireBaseAPI();
+
+                document.addEventListener('DOMContentLoaded', () => {
+                    document.cookie = 'SameSite=None';
+                    document.cookie = 'Secure=true';
+                    const tag = document.createElement('script');
+                    tag.src = "https://www.youtube.com/iframe_api";
+                    const firstScriptTag = document.getElementsByTagName('script')[0];
+                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                });
+
+                /**
+                 * firebase calls handler to synchronise flows from firebase queries and main flow
+                 * @param {string} signal - string to indetify the firebase event type
+                 */
+                function coreSignalHandler(signal) {
+                    switch (signal) {
+                        case firebaseApi.Signals.loggedIn:
+                            firebaseApi.readAllTables(target);
+                            break;
+                        case firebaseApi.Signals.presentersEmpty:
+                            break;
+                        case firebaseApi.Signals.presentersLoaded:
+                            //optionnaly hide loading animaion
+                            const rootList = document.getElementById('rootList');
+                            Presenter.ReDraw(rootList, currentPresenterArray); //draw current presenters to screen
+                            break;
+                        case firebaseApi.Signals.tablesLoaded:
+                            console.log(navigationTable);
+                            const sidebarElem = document.querySelector('.sidebar');
+                            for (const module of navigationTable.modules) {
+                                const ulElem = document.createElement('ul');
+                                const headerSidebar = document.createElement('h4');
+                                headerSidebar.classList.add('sidebar__header')
+                                ulElem.classList.add('menu__list');
+                                headerSidebar.addEventListener('click', () => {
+                                    if (ulElem.clientHeight === 0) {
+                                        ulElem.style.height = `${ulElem.scrollHeight}px`
+                                    } else {
+                                        ulElem.style.height = 0;
+                                    }
+                                })
+                                headerSidebar.textContent = module.forkName;
+                                sidebarElem.appendChild(headerSidebar);
+                                for (const unit of module.list) {
+                                    const liElem = document.createElement('li');
+                                    liElem.classList.add('menu__item')
+                                    liElem.textContent = unit.unitName;
+                                    liElem.addEventListener('click', () => {
+                                        firebaseApi.readPresenters(unit.fork_unitId);
+                                    });
+                                    ulElem.appendChild(liElem)
+                                }
+                                sidebarElem.appendChild(ulElem)
+                            }
+                    }
+                }
+            </script>
 </body>
+
 </html>
