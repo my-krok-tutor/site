@@ -36,32 +36,34 @@
     <button class="btn-menu"><span class="material-icons btn-menu__icon">view_headline</span></button>
     <main class='main'>
         <div class="sidebar">
-            <button class="btn-theme">Темная тема</button>
+            <div class="sidebar__sticky">
+                <button class="btn-theme">Темная тема</button>
+            </div>
         </div>
         <div id='rootList'></div>
         <main>
-<script type="text/javascript">
-    const sidebarElem = document.querySelector('.sidebar');
-    document.querySelector('.btn-menu').addEventListener('click',function(){
-        sidebarElem.classList.toggle('sidebar--mobail');
-    })
-                ;(function () {
-                    let i = 1;
-                    document.querySelector('.btn-theme').addEventListener('click', (e) => {
-                        if (i % 2) {
-                            const link = document.createElement('link');
-                            link.setAttribute('rel', 'stylesheet');
-                            link.setAttribute('href', 'dark-theme.css');
-                            document.head.append(link)
-                            e.target.textContent = 'Светлая тема'
-                            i++
-                        } else {
-                            document.head.querySelector('link:last-child').remove();
-                            e.target.textContent = 'Темная тема'
-                            i++
-                        }
-                    })
-                })()
+            <script type="text/javascript">
+                const sidebarElem = document.querySelector('.sidebar');
+                document.querySelector('.btn-menu').addEventListener('click', function () {
+                    sidebarElem.classList.toggle('sidebar--mobail');
+                })
+                    ; (function () {
+                        let i = 1;
+                        document.querySelector('.btn-theme').addEventListener('click', (e) => {
+                            if (i % 2) {
+                                const link = document.createElement('link');
+                                link.setAttribute('rel', 'stylesheet');
+                                link.setAttribute('href', 'dark-theme.css');
+                                document.head.append(link)
+                                e.target.textContent = 'Светлая тема'
+                                i++
+                            } else {
+                                document.head.querySelector('link:last-child').remove();
+                                e.target.textContent = 'Темная тема'
+                                i++
+                            }
+                        })
+                    })()
                 let currentPresenterArray = [];
                 let navigationTable = null;
 
@@ -117,7 +119,8 @@
                                 headerSidebar.textContent = module.forkName;
                                 headerWrapper.append(headerSidebar)
                                 headerWrapper.insertAdjacentHTML("beforeend", '<span aria-hidden="true" class="material-icons">expand_more</span>');
-                                sidebarElem.appendChild(headerWrapper);
+                                const listWrapper = document.createElement('div');
+                                listWrapper.appendChild(headerWrapper);
                                 for (const unit of module.list) {
                                     const liElem = document.createElement('li');
                                     liElem.classList.add('menu__item')
@@ -128,7 +131,8 @@
                                     });
                                     ulElem.appendChild(liElem)
                                 }
-                                sidebarElem.appendChild(ulElem)
+                                listWrapper.appendChild(ulElem);
+                                sidebarElem.querySelector('.sidebar__sticky').appendChild(listWrapper)
                             }
                     }
                 }

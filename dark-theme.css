@@ -20,11 +20,11 @@ body {
     color: #718792;
 }
 .par__color_Light_Blue {
-    color: #007ac1;
+    color: #67daff;
 }
 .infocard__color_Green {
-    background-color: #75a478;
-    color: #98ee99;
+    background-color: #1b5e20;
+    color: #ffffff;
 }
 .infocard__color_Orange {
     color: #a30000;
@@ -35,8 +35,18 @@ body {
 }
 .ans__correct {
     background-color: #75a478;
-    color: #003300;
+    color: white;
 }
 .ans__wrong {
     color: #a30000;
+}
+.sidebar {
+   background-color: #727272;
+   box-shadow: 1px 1px 8px 0px rgb(8 9 9);
+}
+.menu__list {
+    background-color: #636b71;
+}
+.menu__item:hover {
+    background-color: #404b53;
 }
