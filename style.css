@@ -116,5 +116,7 @@
     .menu__item {
         padding: 1.3rem;
     }
-    
+    #rootList {
+        margin: 0 1rem;
+    }
 }
