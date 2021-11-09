@@ -9,37 +9,34 @@ body {
 .par__color_Black {
     color: white;
 }
-.infocard__color_Blue_Grey {
-    background-color: #696969;
+
+.infocard__color_Green {
+    color: #338a3e;
 }
 .infocard__color_Blue_Grey {
-    color: #ffffff;
+    background-color: #9ea7aa;
+}
+.par__color_Blue_Grey {
+    color: #718792;
 }
 .par__color_Light_Blue {
-    color: white;
+    color: #007ac1;
 }
 .infocard__color_Green {
-    color: #ffffff;
-    background-color: #6b7b6c;
+    background-color: #75a478;
+    color: #98ee99;
+}
+.infocard__color_Orange {
+    color: #a30000;
+    background-color: #ca9b52;
 }
 .test_item_card {
-    background-color: #5b5b5b;
+    background-color: #bcbcbc;
 }
 .ans__correct {
-    background-color: #8aa18b;
-}
-.par__color_Green {
-    color: #ffffff;
-}
-.infocard__color_Orange {
-    background-color: #4d3d30;
-}
-.par__text {
-    color: #ffffff !important;
+    background-color: #75a478;
+    color: #003300;
 }
 .ans__wrong {
-    color: #d3a12f !important;
-}
-.infocard__color_Orange {
-    color: #e94c25;
+    color: #a30000;
 }

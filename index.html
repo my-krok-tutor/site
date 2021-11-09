@@ -8,6 +8,7 @@
     <title>My KROK Tutor index</title>
     <meta name="description" content="My KROK Tutor index">
     <meta name="author" content="My KROK Tutor">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
@@ -32,25 +33,30 @@
 </head>
 
 <body>
+    <button class="btn-menu"><span class="material-icons btn-menu__icon">view_headline</span></button>
     <main class='main'>
         <div class="sidebar">
             <button class="btn-theme">Темная тема</button>
         </div>
         <div id='rootList'></div>
         <main>
-            <script type="text/javascript">
-                (function () {
+<script type="text/javascript">
+    const sidebarElem = document.querySelector('.sidebar');
+    document.querySelector('.btn-menu').addEventListener('click',function(){
+        sidebarElem.classList.toggle('sidebar--mobail');
+    })
+                ;(function () {
                     let i = 1;
                     document.querySelector('.btn-theme').addEventListener('click', (e) => {
                         if (i % 2) {
                             const link = document.createElement('link');
-                            link.setAttribute('href', 'dark-theme.css');
                             link.setAttribute('rel', 'stylesheet');
+                            link.setAttribute('href', 'dark-theme.css');
                             document.head.append(link)
                             e.target.textContent = 'Светлая тема'
                             i++
                         } else {
-                            document.querySelector('link:last-child').remove();
+                            document.head.querySelector('link:last-child').remove();
                             e.target.textContent = 'Темная тема'
                             i++
                         }
@@ -90,25 +96,33 @@
                             break;
                         case firebaseApi.Signals.tablesLoaded:
                             console.log(navigationTable);
-                            const sidebarElem = document.querySelector('.sidebar');
                             for (const module of navigationTable.modules) {
                                 const ulElem = document.createElement('ul');
                                 const headerSidebar = document.createElement('h4');
                                 headerSidebar.classList.add('sidebar__header')
                                 ulElem.classList.add('menu__list');
-                                headerSidebar.addEventListener('click', () => {
+                                const headerWrapper = document.createElement('div');
+                                headerWrapper.addEventListener('click', () => {
+                                    const icon = headerWrapper.querySelector('.material-icons')
                                     if (ulElem.clientHeight === 0) {
                                         ulElem.style.height = `${ulElem.scrollHeight}px`
+                                        icon.classList.toggle('material-icons--activ')
                                     } else {
                                         ulElem.style.height = 0;
+                                        icon.classList.toggle('material-icons--activ')
                                     }
                                 })
+                                headerWrapper.classList.add('header__wrapper');
+                                headerWrapper.insertAdjacentHTML("afterbegin", module.svg);
                                 headerSidebar.textContent = module.forkName;
-                                sidebarElem.appendChild(headerSidebar);
+                                headerWrapper.append(headerSidebar)
+                                headerWrapper.insertAdjacentHTML("beforeend", '<span aria-hidden="true" class="material-icons">expand_more</span>');
+                                sidebarElem.appendChild(headerWrapper);
                                 for (const unit of module.list) {
                                     const liElem = document.createElement('li');
                                     liElem.classList.add('menu__item')
                                     liElem.textContent = unit.unitName;
+                                    liElem.insertAdjacentHTML("afterbegin", '<span class="material-icons right-arrow">east</span>');
                                     liElem.addEventListener('click', () => {
                                         firebaseApi.readPresenters(unit.fork_unitId);
                                     });
