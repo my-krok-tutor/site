@@ -44,6 +44,9 @@ body {
    background-color: #727272;
    box-shadow: 1px 1px 8px 0px rgb(8 9 9);
 }
+.btn-menu {
+    background-color: #727272;
+}
 .menu__list {
     background-color: #636b71;
 }
