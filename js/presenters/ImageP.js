@@ -24,10 +24,9 @@ class ImageP {
         holder.appendChild(imagePreview);
         if (props.imageSubscription != '') {
             const sub = document.createElement('p');
-            const classSub = ['par__text', 'par__textStyle_i', 'par__textAlign_md', 'par__size_s'];
+            const classSub = ['par__text', 'par__textStyle_i', 'par__textAlign_md', 'par__size_s', 'par__color_Blue_Grey'];
             sub.innerText = props.imageSubscription;
             sub.classList.add(...classSub);
-            sub.style.color = '#333'; //modifiable
             holder.appendChild(sub);
         }
         contentL.appendChild(holder);

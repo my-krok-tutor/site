@@ -12,7 +12,7 @@ class FileP {
         const card = document.createElement('div');
         const icon = document.createElement('p');
         const link = document.createElement('a');
-        const classLink = ['infocard__text', 'par__text', 'par__textStyle_n', 'par__textAlign_jf', 'par__size_m'];
+        const classLink = ['infocard__text', 'par__text', 'par__textStyle_n', 'par__textAlign_jf', 'par__size_m', 'infocard__color_Blue_Grey'];
         const classCard = ['infocard', 'infocard__color_Blue_Grey'];
         const classIcon = ['material-icons', 'infocard__icon'];
         link.innerText = props.text;
@@ -23,7 +23,6 @@ class FileP {
         icon.innerText = 'picture_as_pdf';
         icon.classList.add(...classIcon);
         link.classList.add(...classLink);
-        link.style.color = '#37474f'; //modifiable
         card.appendChild(icon);
         card.appendChild(link);
         contentL.appendChild(card);

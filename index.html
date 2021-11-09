@@ -33,33 +33,36 @@
 </head>
 
 <body>
-    <button class="btn-menu"><span class="material-icons btn-menu__icon">view_headline</span></button>
+    <div class="titleBar">
+        <span id="btn-menu" class="material-icons btn-menu__icon btn-menu">menu</span>
+        <p id="titleOfPage" class="titleOfPage">Добро пожаловать!</p>
+        <span id="btn-theme" class="material-icons btn-menu__icon">light_mode</span>
+    </div>
     <main class='main'>
         <div class="sidebar">
             <div class="sidebar__sticky">
-                <button class="btn-theme">Темная тема</button>
             </div>
         </div>
-        <div id='rootList'></div>
+        <div id='rootList' class="rootList"></div>
         <main>
             <script type="text/javascript">
                 const sidebarElem = document.querySelector('.sidebar');
-                document.querySelector('.btn-menu').addEventListener('click', function () {
+                document.getElementById('btn-menu').addEventListener('click', function () {
                     sidebarElem.classList.toggle('sidebar--mobail');
                 })
                     ; (function () {
                         let i = 1;
-                        document.querySelector('.btn-theme').addEventListener('click', (e) => {
+                        document.getElementById('btn-theme').addEventListener('click', (e) => {
                             if (i % 2) {
                                 const link = document.createElement('link');
                                 link.setAttribute('rel', 'stylesheet');
-                                link.setAttribute('href', 'dark-theme.css');
+                                link.setAttribute('href', 'css/styles_dark.css');
                                 document.head.append(link)
-                                e.target.textContent = 'Светлая тема'
+                                e.target.textContent = 'nights_stay'
                                 i++
                             } else {
                                 document.head.querySelector('link:last-child').remove();
-                                e.target.textContent = 'Темная тема'
+                                e.target.textContent = 'light_mode'
                                 i++
                             }
                         })

@@ -13,9 +13,8 @@ class TestItem {
         card.classList.add('infocard');
         card.classList.add('test_item_card');
         const task = document.createElement('p');
-        const classTask = ['par__text', 'par__textStyle_n', 'par__textAlign_jf', 'par__size_m'];
+        const classTask = ['par__text', 'par__textStyle_n', 'par__textAlign_jf', 'par__size_m', 'par__color_Black'];
         task.classList.add(...classTask);
-        task.style.color = '#000'; //modifiable
         task.innerText = props.task;
         card.append(task);
         for (let i = 1; i < 7; i++) {
@@ -30,9 +29,8 @@ class TestItem {
         }
         if (props.comment != '') {
             const comment = document.createElement('p');
-            const classComment = ['par__text', 'par__textStyle_n', 'par__textAlign_jf', 'par__size_m'];
+            const classComment = ['par__text', 'par__textStyle_n', 'par__textAlign_jf', 'par__size_m', 'par__color_Blue_Grey'];
             comment.classList.add(...classComment);
-            comment.style.color = '#333'; //modifiable
             comment.innerText = props.comment;
             card.append(comment);
         }
