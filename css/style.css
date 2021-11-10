@@ -1,3 +1,5 @@
+/*#region Presenters*/
+/*#region Common*/
 .par__text {
     font-family: Roboto, sans-serif;
     -moz-osx-font-smoothing: grayscale;
@@ -7,7 +9,9 @@
     word-break: normal;
     margin: 0;
 }
+/*#endregion Common*/
 
+/*#region Paragraph*/
 .par__color_Red{
     color: #d32f2f;
 }
@@ -120,7 +124,9 @@
     font-weight: bold;
     text-decoration: underline;
 }
+/*#endregion Paragraph*/
 
+/*#region Infocard*/
 .infocard{
     background-color: #eee;
     border-radius: 8px;
@@ -194,7 +200,9 @@
     color: #424242;
     background-color: #c2c2c2;
 }
+/*#endregion Infocard*/
 
+/*#region Video*/
 .video__preview_holder{
     background-color: #ccc;
     position: relative;
@@ -231,8 +239,9 @@
     right: 0;
     top: 0;
 }
+/*#endregion Video*/
 
-
+/*#region TestItem*/
 .ans__correct{
     margin-right: -8px;
     margin-top: 2px;
@@ -253,4 +262,170 @@
 .test_item_card{
     display: block !important;
     background-color: #eee;
+}
+/*#endregion TestItem*/
+/*#endregion Presenters*/
+
+/*#region Sidebar*/
+.sidebar {
+    font-family: Roboto, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    letter-spacing: .0178571429em;
+    word-break: normal;
+    margin: 0;
+    min-width: 200px;
+    min-height: 100%;
+
+    margin-right: 20px;
+
+    color: #000;
+
+    background-color: #fff;
+    box-shadow: 1px 1px 8px 0px rgb(34 60 80 / 20%);
+    transition: left 0.2s ease;
+}
+
+.sidebar__sticky {
+    position: sticky;
+    top: 48px;
+    width: auto;
+    height: auto;
+}
+.sidebar.sidebar--mobail {
+    left: 0;
+    top: 48px;
+    display: block;
+    z-index: 1;
+}
+
+.header__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #0003;
+    cursor: pointer;
+}
+.material-icons {
+    transition: transform 0.1s ease;
+}
+.material-icons--activ {
+    transform: rotate(-180deg);
+}
+.sidebar__header {
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.sidebar__header:last-child {
+    border-bottom: 0;
+}
+.menu__list {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.2s ease-in-out;
+    background: #00000011;
+}
+
+.menu__item {
+    display: flex;
+    padding: 10px;
+    line-height: 100%;
+    align-items: center;
+}
+.menu__item:hover {
+    background-color: #607d8b66;
+    cursor: pointer;
+}
+.right-arrow {
+    padding-right: 10px;
+    font-size: 20px;
+}
+/*#endregion Sidebar*/
+
+/*#region Titlebar*/
+.btn-title {
+    display: none;
+}
+
+.btn-title__icon {
+    font-size: 32px;
+    cursor: pointer;
+    margin: 8px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.titleOfPage{
+    margin: 8px;
+    font-size: 24px;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+    font-family: Roboto, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    letter-spacing: .0178571429em;
+    word-break: keep-all;
+}
+
+.titleBar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+    width: 100%;
+    z-index: 10;
+    height: 48px;
+    margin-right: 20px;
+    color: #000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    box-shadow: 1px 1px 8px 0px rgb(34 60 80 / 20%);
+    transition: left 0.2s ease;
+}
+/*#endregion Titlebar*/
+
+/*#region Page*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: color 0.1s ease, background 0.1s ease;
+}
+
+.rootList{
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main {
+    margin-top: 48px !important; 
+    display: flex;
+    min-height: calc(100vh - 48px);
+}
+/*#endregion Page*/
+
+@media (max-width: 640px) {
+    .sidebar {
+        position: fixed;
+        left: -200px;
+    }
+    .sidebar__sticky {
+        position: static;
+    }
+    .btn-title {
+        display: block;
+    }
+    .menu__item {
+        padding: 1.3rem;
+    }
+    #rootList {
+        margin: 0 1rem;
+    }
 }
