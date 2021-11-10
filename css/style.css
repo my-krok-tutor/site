@@ -268,6 +268,7 @@
 
 /*#region Sidebar*/
 .sidebar {
+    z-index: 2;
     font-family: Roboto, sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -297,7 +298,7 @@
     left: 0;
     top: 48px;
     display: block;
-    z-index: 1;
+    z-index: 3;
 }
 
 .header__wrapper {
@@ -398,8 +399,17 @@
     transition: color 0.1s ease, background 0.1s ease;
 }
 
+.canvasBackground{
+    height: calc(100% - 48px);
+    width: 100%;
+    position: fixed;
+}
+
 .rootList{
-    max-width: 600px;
+    background-color: #fff !important;
+    z-index: 2;
+    width: 600px;
+    min-height: 100%;
     margin-left: auto;
     margin-right: auto;
 }
