@@ -14,7 +14,7 @@ class LinkP {
         const link = document.createElement('a');
         const classCard = ['infocard', 'infocard__color_Blue_Grey'];
         const classIcon = ['material-icons', 'infocard__icon'];
-        const classLink = ['infocard__text', 'par__text', 'par__textStyle_n', 'par__textAlign_jf', 'par__size_m'];
+        const classLink = ['infocard__text', 'par__text', 'par__textStyle_n', 'par__textAlign_jf', 'par__size_m', 'infocard__color_Blue_Grey'];
         icon.classList.add(...classIcon);
         card.classList.add(...classCard);
         link.classList.add(...classLink);
@@ -23,7 +23,6 @@ class LinkP {
         link.href = props.url;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
-        link.style.color = '#37474f'; //modifiable
         card.appendChild(icon);
         card.appendChild(link);
         contentL.appendChild(card);

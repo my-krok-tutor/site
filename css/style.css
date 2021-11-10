@@ -21,13 +21,13 @@
     color: #303f9f;
 }
 .par__color_Light_Blue{
-    color: #0288d1;
+    color: #03a9f4;
 }
 .par__color_Teal{
     color: #00796b;
 }
 .par__color_Green{
-    color: #388e3c;
+    color: #66bb6a;
 }
 .par__color_Lime{
     color: #7c8500;
@@ -213,7 +213,6 @@
 }
 
 .video__preview_icon{
-    padding: 8px;
     background-color: #fff;
     color: #333;
     border-radius: 48px;
@@ -248,7 +247,7 @@
 .ans__wrong{
     margin-top: 2px;
     margin-bottom: 2px;
-    color: #d32f2f;
+    color: #c62828;
 }
 
 .test_item_card{

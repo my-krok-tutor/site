@@ -1,0 +1,130 @@
+body {
+    background-color: #212121 !important;
+}
+
+[id^='presenterM'] {
+    background-color: #212121 !important;
+}
+
+.par__color_Red{
+    color: #ef9a9a;
+}
+.par__color_Pink{
+    color: #f48fb1;
+}
+.par__color_Purple{
+    color: #ce93d8;
+}
+.par__color_Indigo{
+    color: #9fa8da;
+}
+.par__color_Light_Blue{
+    color: #81d4fa;
+}
+.par__color_Teal{
+    color: #80cbc4;
+}
+.par__color_Green{
+    color: #a5d6a7;
+}
+.par__color_Lime{
+    color: #e6ee9c;
+}
+.par__color_Yellow{
+    color: #fff59d;
+}
+.par__color_Orange{
+    color: #ffcc80;
+}
+.par__color_Blue_Grey{
+    color: #b0bec5;
+}
+.par__color_Black{
+    color: #fff;
+}
+
+.infocard__color_Red{
+    color: #ffebee;
+    background-color: #b71c1c;
+}
+.infocard__color_Pink{
+    color: #fce4ec;
+    background-color: #880e4f;
+}
+.infocard__color_Purple{
+    color: #f3e5f5;
+    background-color: #4a148c;
+}
+.infocard__color_Indigo{
+    color: #e8eaf6;
+    background-color: #c0cfff;
+}
+.infocard__color_Light_Blue{
+    color: #e1f5fe;
+    background-color: #01579b;
+}
+.infocard__color_Teal{
+    color: #e0f2f1;
+    background-color: #004d40;
+}
+.infocard__color_Green{
+    color: #e8f5e9;
+    background-color: #1b5e20;
+}
+.infocard__color_Lime{
+    color: #f9fbe7;
+    background-color: #827717;
+}
+.infocard__color_Yellow{
+    color: #fffde7;
+    background-color: #f57f17;
+}
+.infocard__color_Orange{
+    color: #fff3e0;
+    background-color: #dd2c00;
+}
+.infocard__color_Blue_Grey{
+    color: #eceff1;
+    background-color: #37474f;
+}
+.infocard__color_Black{
+    color: #fafafa;
+    background-color: #323232;
+}
+
+
+.ans__correct{
+    background-color: #1b5e20;
+    color: #a5d6a7;
+}
+
+.ans__wrong{
+    color: #ef9a9a;
+}
+
+.test_item_card{
+    background-color: #323232;
+}
+
+.titleBar{
+    color: #fff;
+    background-color: #363636;
+    box-shadow: 1px 1px 8px 0px rgb(8 9 9);
+}
+
+
+
+.sidebar {
+    color: #fff;
+   background-color: #363636;
+   box-shadow: 1px 1px 8px 0px rgb(8 9 9);
+}
+.header__wrapper {
+    border-bottom: 2px solid #fff6;
+}
+.menu__list {
+    background: #00000033;
+}
+.menu__item:hover {
+    background-color: #607d8b66;
+}

@@ -1,5 +1,4 @@
-class Presenter{
-
+class Presenter {
     /**
      * enumerator for detecting type of presenter
      * UNTOUCHABLE!
@@ -11,15 +10,15 @@ class Presenter{
         link: 'link',
         paragraph: 'paragraph',
         testitem: 'testitem',
-        video: 'video'
-    }
+        video: 'video',
+    };
 
     /**
      * default constructor.
      * UNTOUCHABLE!
      * @param {string} fork_unitId - unique address of unit for technical targets
      */
-    constructor(fork_unitId){
+    constructor(fork_unitId) {
         this.unitId = fork_unitId.split('@')[0];
         this.forkId = fork_unitId.split('@')[1];
         this.fork_unitId = fork_unitId;
@@ -38,11 +37,11 @@ class Presenter{
      * @param {Node} rootList - main holder of presenter views on page
      * @param {Object[]} presenters - array of abstract presenters to draw on this unit
      */
-    static ReDraw(rootList, presenters){
+    static ReDraw(rootList, presenters) {
         while (rootList.firstChild) {
             rootList.removeChild(rootList.lastChild);
         }
-        for(let i = 0; i < presenters.length; i++){
+        for (let i = 0; i < presenters.length; i++) {
             presenters[i].DrawPresenter(i, rootList);
         }
     }
@@ -53,7 +52,7 @@ class Presenter{
      * @param {number} order - order in sorted presenters array @see ReDraw()
      * @param {Node} rootList - main holder of presenter views on page
      */
-    DrawPresenter(order, rootList){
+    DrawPresenter(order, rootList) {
         const id = 'presenterM' + order;
         const props = this.presenterProps;
         const holder = document.createElement('div');
@@ -68,7 +67,7 @@ class Presenter{
         holder.style.paddingRight = '16px';
         //#endmodifiable
 
-        switch(this.presenterType){
+        switch (this.presenterType) {
             case Presenter.presenterType.paragraph:
                 Paragraph.Draw(props, holder);
                 break;
@@ -100,7 +99,7 @@ class Presenter{
      * @param {Object} record - firebase transport json
      * @return {Object} abstract presenter for manipulating from main file
      */
-    static Decode(presenterId, record){
+    static Decode(presenterId, record) {
         const presenter = new Presenter(record.fork_unitId);
         presenter.presenterId = presenterId;
         presenter.presenterType = record.presenterType;
