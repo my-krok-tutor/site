@@ -1,11 +1,11 @@
-body {
-    background-color: #212121 !important;
-}
-
+/*#region Presenters*/
+/*#region Common*/
 [id^='presenterM'] {
     background-color: #212121 !important;
 }
+/*#endregion Common*/
 
+/*#region Paragraph*/
 .par__color_Red{
     color: #ef9a9a;
 }
@@ -42,7 +42,9 @@ body {
 .par__color_Black{
     color: #fff;
 }
+/*#endregion Paragraph*/
 
+/*#region Infocard*/
 .infocard__color_Red{
     color: #ffebee;
     background-color: #b71c1c;
@@ -91,8 +93,9 @@ body {
     color: #fafafa;
     background-color: #323232;
 }
+/*#endregion Infocard*/
 
-
+/*#region TestItem*/
 .ans__correct{
     background-color: #1b5e20;
     color: #a5d6a7;
@@ -105,15 +108,10 @@ body {
 .test_item_card{
     background-color: #323232;
 }
+/*#endregion TestItem*/
+/*#endregion Presenters*/
 
-.titleBar{
-    color: #fff;
-    background-color: #363636;
-    box-shadow: 1px 1px 8px 0px rgb(8 9 9);
-}
-
-
-
+/*#region Sidebar*/
 .sidebar {
     color: #fff;
    background-color: #363636;
@@ -128,3 +126,18 @@ body {
 .menu__item:hover {
     background-color: #607d8b66;
 }
+/*#endregion Sidebar*/
+
+/*#region Titlebar*/
+.titleBar{
+    color: #fff;
+    background-color: #363636;
+    box-shadow: 1px 1px 8px 0px rgb(8 9 9);
+}
+/*#endregion Titlebar*/
+
+/*#region Page*/
+body {
+    background-color: #212121 !important;
+}
+/*#endregion Page*/

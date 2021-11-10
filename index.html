@@ -29,14 +29,13 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="titleBar">
-        <span id="btn-menu" class="material-icons btn-menu__icon btn-menu">menu</span>
+        <span id="btn-title" class="material-icons btn-title__icon btn-title">menu</span>
         <p id="titleOfPage" class="titleOfPage">Добро пожаловать!</p>
-        <span id="btn-theme" class="material-icons btn-menu__icon">light_mode</span>
+        <span id="btn-theme" class="material-icons btn-title__icon">light_mode</span>
     </div>
     <main class='main'>
         <div class="sidebar">
@@ -47,7 +46,7 @@
         <main>
             <script type="text/javascript">
                 const sidebarElem = document.querySelector('.sidebar');
-                document.getElementById('btn-menu').addEventListener('click', function () {
+                document.getElementById('btn-title').addEventListener('click', function () {
                     sidebarElem.classList.toggle('sidebar--mobail');
                 })
                     ; (function () {
