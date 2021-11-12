@@ -33,24 +33,28 @@
 </head>
 
 <body>
-    <div class="titleBar">
-        <span id="btn-title" class="material-icons btn-title__icon btn-title">menu</span>
-        <p id="titleOfPage" class="titleOfPage">Добро пожаловать!</p>
-        <span id="btn-theme" class="material-icons btn-title__icon">light_mode</span>
-    </div>
+    <div class="container">
+        <header class="titleBar">
+            <span id="btn-title" class="material-icons btn-title__icon btn-title">menu</span>
+            <p id="titleOfPage" class="titleOfPage">Добро пожаловать!</p>
+            <span id="btn-theme" class="material-icons btn-title__icon">light_mode</span>
+        </header>
     <main class='main'>
         <canvas id='backgroundCanvas' class="canvasBackground"></canvas>
         <div class="sidebar">
             <div class="sidebar__sticky">
             </div>
         </div>
-        <div id='rootList' class="rootList"></div>
+        <div class='root-list--wrapper'>
+            <div id='rootList' class="rootList"></div>
+        </div>
     </main>
+</div>
     <script type="text/javascript">
         const sidebarElem = document.querySelector('.sidebar');
         document.getElementById('btn-title').addEventListener('click', function () {
             sidebarElem.classList.toggle('sidebar--mobail');
-        }); 
+        });
         (function () {
             let i = 1;
             document.getElementById('btn-theme').addEventListener('click', (e) => {
@@ -106,9 +110,23 @@
                     //optionnaly hide loading animaion
                     const rootList = document.getElementById('rootList');
                     Presenter.ReDraw(rootList, currentPresenterArray); //draw current presenters to screen
+                    rootList.insertAdjacentHTML('beforeend', `
+                    <div class="nav-list">
+                        <button id="btn-prev" class="nav-list__btn">
+                            <span class="material-icons nav-list__icon-left par__color_Black">arrow_back_ios_new</span>
+                            <p class="nav-list__text-prev par__color_Black">Предыдущая страница</p>
+                            <p class="nav-list__text-module par__color_Black"></p>
+                            </button>
+                        <button id="btn-next" class="nav-list__btn">
+                            <p class="nav-list__text-next par__color_Black">Следующая страница</p>
+                            <p class="nav-list__text-module par__color_Black"></p>
+                            <span class="material-icons nav-list__icon-right par__color_Black">arrow_forward_ios</span>
+                        </button>
+                    </div>
+                    `)
+                    console.log(firebaseApi.Signals.tablesLoaded)
                     break;
                 case firebaseApi.Signals.tablesLoaded:
-                    console.log(navigationTable);
                     for (const module of navigationTable.modules) {
                         const ulElem = document.createElement('ul');
                         const headerSidebar = document.createElement('h4');
@@ -132,13 +150,41 @@
                         headerWrapper.insertAdjacentHTML("beforeend", '<span aria-hidden="true" class="material-icons">expand_more</span>');
                         const listWrapper = document.createElement('div');
                         listWrapper.appendChild(headerWrapper);
-                        for (const unit of module.list) {
+                        for (let i = 0; i < module.list.length; i++) {
                             const liElem = document.createElement('li');
                             liElem.classList.add('menu__item')
-                            liElem.textContent = unit.unitName;
+                            liElem.textContent = module.list[i].unitName;
                             liElem.insertAdjacentHTML("afterbegin", '<span class="material-icons right-arrow">east</span>');
                             liElem.addEventListener('click', () => {
-                                firebaseApi.readPresenters(unit.fork_unitId);
+                                firebaseApi.readPresenters(module.list[i].fork_unitId);
+                                const rootList = document.getElementById('rootList');
+                                const observer = new MutationObserver((mutationRecords) => {
+                                    if (mutationRecords[mutationRecords.length - 1].addedNodes) {
+                                        const btnPrev = rootList.querySelector("#btn-prev");
+                                        const btnNext = rootList.querySelector("#btn-next");
+                                        if (module.list[i - 1]) {
+                                            btnPrev.querySelector('.nav-list__text-module').textContent = module.list[i - 1].unitName;
+                                            btnPrev.addEventListener('click', () => {
+                                                firebaseApi.readPresenters(module.list[--i].fork_unitId);
+                                            })
+                                        } else {
+                                            btnPrev.disabled = true;
+                                            rootList.querySelector('.nav-list__text-prev').style.gridRow = "2 span";
+                                        }
+                                        if (module.list[i + 1]) {
+                                            btnNext.querySelector('.nav-list__text-module').textContent = module.list[i + 1].unitName;
+                                            btnNext.addEventListener('click', () => {
+                                                firebaseApi.readPresenters(module.list[++i].fork_unitId);
+                                            })
+                                        } else {
+                                            btnNext.disabled = true;
+                                            rootList.querySelector('.nav-list__text-next').style.gridRow = "2 span";
+                                        }
+                                    }
+                                });
+                                observer.observe(rootList, {
+                                    childList: true,
+                                });
                             });
                             ulElem.appendChild(liElem)
                         }
@@ -147,7 +193,7 @@
                     }
             }
         }
-    </script>            
+    </script>
 </body>
 
 </html>
