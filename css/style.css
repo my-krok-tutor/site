@@ -129,7 +129,7 @@
 .infocard {
     background-color: #eee;
     border-radius: 8px;
-    margin: 8px;
+    margin: 8px 0;
     padding: 8px;
     display: flex;
     flex-wrap: nowrap;
@@ -320,7 +320,6 @@
 }
 .sidebar__header {
     padding: 10px;
-    text-align: center;
     text-transform: uppercase;
     flex: 1;
 }
@@ -445,23 +444,27 @@ html {
 .nav-list {
     display: flex;
     align-items: stretch;
-    justify-content: center;
-    width: 100%;
+    justify-content: stretch;
+    margin: 0 16px;
     gap: 10px;
     padding-bottom: 10px;
 }
+.nav-list__btn__prev{ 
+    grid-template-columns: auto 1fr;
+}
+.nav-list__btn__next{ 
+    grid-template-columns: 1fr auto;
+}
 .nav-list__btn {
     display: grid;
-    grid-template-columns: 1fr auto;
     grid-template-rows: auto auto;
     align-items: center;
     grid-auto-flow: column;
     row-gap: 5px;
     width: 100%;
-    max-width: 150px;
-    padding: 5px;
+    padding: 8px;
     background-color: inherit;
-    border: 1px solid gray;
+    border: 3px solid #455a64;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -472,6 +475,15 @@ html {
 .nav-list__icon-right,
 .nav-list__icon-left {
     grid-row: 2 span;
+}
+.nav-list__text-prev,
+.nav-list__text-next{
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.nav-list__text-module{
+    font-size: 16px;
 }
 /*#endregion Page*/
 
