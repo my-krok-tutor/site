@@ -33,24 +33,28 @@
 </head>
 
 <body>
-    <div class="titleBar">
-        <span id="btn-title" class="material-icons btn-title__icon btn-title">menu</span>
-        <p id="titleOfPage" class="titleOfPage">Добро пожаловать!</p>
-        <span id="btn-theme" class="material-icons btn-title__icon">light_mode</span>
-    </div>
+    <div class="container">
+        <div class="titleBar">
+            <span id="btn-title" class="material-icons btn-title__icon btn-title">menu</span>
+            <p id="titleOfPage" class="titleOfPage">Добро пожаловать!</p>
+            <span id="btn-theme" class="material-icons btn-title__icon">light_mode</span>
+        </div>
     <main class='main'>
         <canvas id='backgroundCanvas' class="canvasBackground"></canvas>
         <div class="sidebar">
             <div class="sidebar__sticky">
             </div>
         </div>
-        <div id='rootList' class="rootList"></div>
+        <div class='root-list--wrapper'>
+            <div id='rootList' class="rootList"></div>
+        </div>
     </main>
+</div>
     <script type="text/javascript">
         const sidebarElem = document.querySelector('.sidebar');
         document.getElementById('btn-title').addEventListener('click', function () {
             sidebarElem.classList.toggle('sidebar--mobail');
-        }); 
+        });
         (function () {
             let i = 1;
             document.getElementById('btn-theme').addEventListener('click', (e) => {
@@ -59,13 +63,13 @@
                     link.setAttribute('rel', 'stylesheet');
                     link.setAttribute('href', 'css/styles_dark.css');
                     document.head.append(link);
-                    background.setDark();
+                    // background.setDark();
                     e.target.textContent = 'nights_stay'
                     i++
                 } else {
                     document.head.querySelector('link:last-child').remove();
                     e.target.textContent = 'light_mode';
-                    background.setLight();
+                    // background.setLight();
                     i++
                 }
             })
@@ -86,6 +90,33 @@
             const firstScriptTag = document.getElementsByTagName('script')[0];
             firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
             background.setLight();
+            //             function backgraund() {
+            //   const images = [
+            //     'M9,2H7V4.1C6.29,4.25 5.73,4.54 5.32,4.91L2.7,2.29L1.29,3.71L4.24,6.65C4,7.39 4,8 4,8H2V10H4.04C4.1,10.63 4.21,11.36 4.4,12.15L1.68,13.05L2.31,14.95L5,14.05C5.24,14.56 5.5,15.08 5.82,15.58L3.44,17.17L4.55,18.83L7.07,17.15C7.63,17.71 8.29,18.21 9.06,18.64L8.1,20.55L9.89,21.45L10.89,19.45L10.73,19.36C11.68,19.68 12.76,19.9 14,19.97V22H16V19.93C16.76,19.84 17.81,19.64 18.77,19.19L20.29,20.71L21.7,19.29L20.37,17.95C20.75,17.44 21,16.8 21,16C21,15.5 20.95,15.08 20.88,14.68L22.45,13.9L21.55,12.1L20.18,12.79C19.63,11.96 18.91,11.5 18.29,11.28L18.95,9.32L17.05,8.68L16.29,10.96C14.96,10.83 14.17,10.32 13.7,9.77L15.45,8.9L14.55,7.1L13,7.89C12.97,7.59 12.86,6.72 12.28,5.87L13.83,3.55L12.17,2.44L10.76,4.56C10.28,4.33 9.7,4.15 9,4.06M15,18C12.06,18 9.81,17.18 8.31,15.56C5.68,12.72 6,8.2 6,8.17V8.11L6,8.03C6,7.1 6.39,6 8,6C10.63,6 10.97,7.43 11,8C11,10 12.6,13 17,13C17.33,13 19,13.15 19,16C19,17.89 15.03,18 15,18M8.5,8A1.5,1.5 0 0,0 7,9.5A1.5,1.5 0 0,0 8.5,11A1.5,1.5 0 0,0 10,9.5A1.5,1.5 0 0,0 8.5,8M11,12A1,1 0 0,0 10,13A1,1 0 0,0 11,14A1,1 0 0,0 12,13A1,1 0 0,0 11,12M15.5,14A1.5,1.5 0 0,0 14,15.5A1.5,1.5 0 0,0 15.5,17A1.5,1.5 0 0,0 17,15.5A1.5,1.5 0 0,0 15.5,14Z',
+            //     'M19,7H11V14H3V5H1V20H3V17H21V20H23V11A4,4 0 0,0 19,7M7,13A3,3 0 0,0 10,10A3,3 0 0,0 7,7A3,3 0 0,0 4,10A3,3 0 0,0 7,13Z',
+            //     'M10,3L8,5V7H5C3.85,7 3.12,8 3,9L2,19C1.88,20 2.54,21 4,21H20C21.46,21 22.12,20 22,19L21,9C20.88,8 20.06,7 19,7H16V5L14,3H10M10,5H14V7H10V5M11,10H13V13H16V15H13V18H11V15H8V13H11V10',
+            //     'M12.72,13.15L13.62,12.26C13.6,11 14.31,9.44 15.62,8.14C17.57,6.18 20.11,5.55 21.28,6.72C22.45,7.89 21.82,10.43 19.86,12.38C18.56,13.69 17,14.4 15.74,14.38L14.85,15.28C14.5,15.61 14,15.66 13.6,15.41C12.76,15.71 12,16.08 11.56,16.8C11.03,17.68 11.03,19.1 10.47,19.95C9.91,20.81 8.79,21.1 7.61,21.1C6.43,21.1 5,21 3.95,19.5L6.43,19.92C7,20 8.5,19.39 9.05,18.54C9.61,17.68 9.61,16.27 10.14,15.38C10.61,14.6 11.5,14.23 12.43,13.91C12.42,13.64 12.5,13.36 12.72,13.15M7,2A5,5 0 0,1 12,7A5,5 0 0,1 7,12A5,5 0 0,1 2,7A5,5 0 0,1 7,2M7,4A3,3 0 0,0 4,7A3,3 0 0,0 7,10A3,3 0 0,0 10,7A3,3 0 0,0 7,4Z',
+            //     'M13 3C16.9 3 20 6.1 20 10C20 12.8 18.4 15.2 16 16.3V21H9V18H8C6.9 18 6 17.1 6 16V13H4.5C4.1 13 3.8 12.5 4.1 12.2L6 9.7C6.2 5.9 9.2 3 13 3M13 1C8.4 1 4.6 4.4 4.1 8.9L2.5 11C1.9 11.8 1.9 12.8 2.3 13.6C2.7 14.3 3.3 14.8 4 14.9V16C4 17.9 5.3 19.4 7 19.9V23H18V17.5C20.5 15.8 22 13.1 22 10C22 5 18 1 13 1M15 9L11.9 15L12.5 11H10.4L12.5 6H15L13.5 9H15Z',
+            //     'M18.4,11.2L14.3,11.4L16.6,8.8C16.8,8.5 16.9,8 16.8,7.5C16.7,7.2 16.6,6.9 16.3,6.7L10.9,3.5C10.5,3.2 9.9,3.3 9.5,3.6L6.8,6.1C6.3,6.6 6.2,7.3 6.7,7.8C7.1,8.3 7.9,8.3 8.4,7.9L10.4,6.1L12.3,7.2L8.1,11.5C8,11.6 8,11.7 7.9,11.7C7.4,11.9 6.9,12.1 6.5,12.4L8,13.9C8.5,13.7 9,13.5 9.5,13.5C11.4,13.5 13,15.1 13,17C13,17.6 12.9,18.1 12.6,18.5L14.1,20C14.7,19.1 15,18.1 15,17C15,15.8 14.6,14.6 13.9,13.7L17.2,13.4L17,18.2C16.9,18.9 17.4,19.4 18.1,19.5H18.2C18.8,19.5 19.3,19 19.4,18.4L19.6,12.5C19.6,12.2 19.5,11.8 19.3,11.6C19,11.3 18.7,11.2 18.4,11.2M18,5.5A2,2 0 0,0 20,3.5A2,2 0 0,0 18,1.5A2,2 0 0,0 16,3.5A2,2 0 0,0 18,5.5M12.5,21.6C11.6,22.2 10.6,22.5 9.5,22.5C6.5,22.5 4,20 4,17C4,15.9 4.3,14.9 4.9,14L6.4,15.5C6.2,16 6,16.5 6,17C6,18.9 7.6,20.5 9.5,20.5C10.1,20.5 10.6,20.4 11,20.1L12.5,21.6Z',
+            //     'M14.73 2.29A1 1 0 0 1 16.14 3.7L13 6.79L13.76 7.74L15.7 12.74A1.46 1.46 0 0 1 15.36 14.29L12.27 17.38A1.55 1.55 0 0 1 10.15 17.38L5.55 12.78A1.37 1.37 0 0 1 5.15 11.78L4.65 5.34H5.72A1 1 0 0 1 6.47 5.64L6.61 5.81L7.66 9.29M7.66 22L2 16.36L4.12 14.24L9.78 19.9M19.5 4.5S17 7.26 17 9A2.5 2.5 0 1 0 22 9C22 7.26 19.5 4.5 19.5 4.5Z',
+            //     'M7,2C4,2 2,5 2,8C2,10.11 3,13 4,14C5,15 6,22 8,22C12.54,22 10,15 12,15C14,15 11.46,22 16,22C18,22 19,15 20,14C21,13 22,10.11 22,8C22,5 20,2 17,2C14,2 14,3 12,3C10,3 10,2 7,2M7,4C9,4 10,5 12,5C14,5 15,4 17,4C18.67,4 20,6 20,8C20,9.75 19.14,12.11 18.19,13.06C17.33,13.92 16.06,19.94 15.5,19.94C15.29,19.94 15,18.88 15,17.59C15,15.55 14.43,13 12,13C9.57,13 9,15.55 9,17.59C9,18.88 8.71,19.94 8.5,19.94C7.94,19.94 6.67,13.92 5.81,13.06C4.86,12.11 4,9.75 4,8C4,6 5.33,4 7,4Z',
+            //     'M2 0C.9 0 0 .9 0 2V6H2V2H6V0H2M18 0V2H22V6H24V2C24 .9 23.1 0 22 0H18M12 3C7.6 3 4 6.6 4 11C4 13.5 5.2 15.8 7 17.2V21H9V18H11V21H13V18H15V21H17V17.2C18.8 15.7 20 13.5 20 11C20 6.6 16.4 3 12 3M8 14C6.9 14 6 13.1 6 12S6.9 10 8 10 10 10.9 10 12 9.1 14 8 14M10.5 16L12 13L13.5 16H10.5M16 14C14.9 14 14 13.1 14 12S14.9 10 16 10 18 10.9 18 12 17.1 14 16 14M0 18V22C0 23.1 .9 24 2 24H6V22H2V18H0M22 18V22H18V24H22C23.1 24 24 23.1 24 22V18H22Z',
+            //     'M4 18C4.67 19.85 6.07 22 12 22C14.36 22 17.07 21.93 19 20C20 19 22 17 22 11S20 4 18 4C16.62 4 15 4 14 6V6.03A1.82 1.82 0 0 1 12.13 6.95C11 6.81 11 6.37 11 6V2H9V6A2.92 2.92 0 0 0 12 9C13 9 13 10.78 13 12C13 13.89 12.5 15.26 11 16C8.69 17.15 6.39 17 5.61 15.47A1.5 1.5 0 0 0 3.14 14.87A3.67 3.67 0 0 0 2 18V22H4Z',
+            //     'M2,22V20C2,20 7,18 12,18C17,18 22,20 22,20V22H2M11.3,9.1C10.1,5.2 4,6.1 4,6.1C4,6.1 4.2,13.9 9.9,12.7C9.5,9.8 8,9 8,9C10.8,9 11,12.4 11,12.4V17C11.3,17 11.7,17 12,17C12.3,17 12.7,17 13,17V12.8C13,12.8 13,8.9 16,7.9C16,7.9 14,10.9 14,12.9C21,13.6 21,4 21,4C21,4 12.1,3 11.3,9.1Z',
+            //   ];
+            //   const rootElem = document.querySelector('.main');
+            //   const initialLine =
+            //     "data: image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' style='width: 100%; height=100%;'%3E%3Cg%3E%3Cpath fill='darkslategrey' d=";
+            //   const endingLine = '/%3E%3C/g%3E%3C/svg%3E';
+            //   let backgraundStr = '';
+            //   for (const cpath of images) {
+            //     backgraundStr += `url("${initialLine}'${cpath}'${endingLine}"),`;
+            //   }
+            //   backgraundStr = backgraundStr.substring(0, backgraundStr.length - 1);
+            //   rootElem.style.backgroundImage = backgraundStr;
+            //   console.log(backgraundStr);
+            // }
+            // backgraund();
         });
         window.addEventListener('resize', (e) => {
             background.drawBackground();
@@ -106,6 +137,21 @@
                     //optionnaly hide loading animaion
                     const rootList = document.getElementById('rootList');
                     Presenter.ReDraw(rootList, currentPresenterArray); //draw current presenters to screen
+                    rootList.insertAdjacentHTML('beforeend', `
+                    <div class="nav-list">
+                        <button id="btn-prev" class="nav-list__btn">
+                            <span class="material-icons nav-list__icon-left par__color_Black">arrow_back_ios_new</span>
+                            <p class="nav-list__text-prev par__color_Black">Предыдущая страница</p>
+                            <p class="nav-list__text-module par__color_Black"></p>
+                            </button>
+                        <button id="btn-next" class="nav-list__btn">
+                            <p class="nav-list__text-next par__color_Black">Следующая страница</p>
+                            <p class="nav-list__text-module par__color_Black"></p>
+                            <span class="material-icons nav-list__icon-right par__color_Black">arrow_forward_ios</span>
+                        </button>
+                    </div>
+                    `)
+                    console.log(firebaseApi.Signals.tablesLoaded)
                     break;
                 case firebaseApi.Signals.tablesLoaded:
                     console.log(navigationTable);
@@ -132,13 +178,41 @@
                         headerWrapper.insertAdjacentHTML("beforeend", '<span aria-hidden="true" class="material-icons">expand_more</span>');
                         const listWrapper = document.createElement('div');
                         listWrapper.appendChild(headerWrapper);
-                        for (const unit of module.list) {
+                        for (let i = 0; i < module.list.length; i++) {
                             const liElem = document.createElement('li');
                             liElem.classList.add('menu__item')
-                            liElem.textContent = unit.unitName;
+                            liElem.textContent = module.list[i].unitName;
                             liElem.insertAdjacentHTML("afterbegin", '<span class="material-icons right-arrow">east</span>');
                             liElem.addEventListener('click', () => {
-                                firebaseApi.readPresenters(unit.fork_unitId);
+                                firebaseApi.readPresenters(module.list[i].fork_unitId);
+                                const rootList = document.getElementById('rootList');
+                                const observer = new MutationObserver((mutationRecords) => {
+                                    if (mutationRecords[mutationRecords.length - 1].addedNodes) {
+                                        const btnPrev = rootList.querySelector("#btn-prev");
+                                        const btnNext = rootList.querySelector("#btn-next");
+                                        if (module.list[i - 1]) {
+                                            btnPrev.querySelector('.nav-list__text-module').textContent = module.list[i - 1].unitName;
+                                            btnPrev.addEventListener('click', () => {
+                                                firebaseApi.readPresenters(module.list[--i].fork_unitId);
+                                            })
+                                        } else {
+                                            btnPrev.disabled = true;
+                                            rootList.querySelector('.nav-list__text-prev').style.gridRow = "2 span";
+                                        }
+                                        if (module.list[i + 1]) {
+                                            btnNext.querySelector('.nav-list__text-module').textContent = module.list[i + 1].unitName;
+                                            btnNext.addEventListener('click', () => {
+                                                firebaseApi.readPresenters(module.list[++i].fork_unitId);
+                                            })
+                                        } else {
+                                            btnNext.disabled = true;
+                                            rootList.querySelector('.nav-list__text-next').style.gridRow = "2 span";
+                                        }
+                                    }
+                                });
+                                observer.observe(rootList, {
+                                    childList: true,
+                                });
                             });
                             ulElem.appendChild(liElem)
                         }
@@ -147,7 +221,7 @@
                     }
             }
         }
-    </script>            
+    </script>
 </body>
 
 </html>
