@@ -112,19 +112,44 @@
                     Presenter.ReDraw(rootList, currentPresenterArray); //draw current presenters to screen
                     rootList.insertAdjacentHTML('beforeend', `
                     <div class="nav-list">
-                        <button id="btn-prev" class="nav-list__btn">
-                            <span class="material-icons nav-list__icon-left par__color_Black">arrow_back_ios_new</span>
-                            <p class="nav-list__text-prev par__color_Black">Предыдущая страница</p>
+                        <button id="btn-prev" class="nav-list__btn nav-list__btn__prev">
+                            <span class="material-icons nav-list__icon-left par__color_Blue_Grey">arrow_back_ios_new</span>
+                            <p class="nav-list__text-prev par__color_Blue_Grey">Предыдущая страница</p>
                             <p class="nav-list__text-module par__color_Black"></p>
                             </button>
-                        <button id="btn-next" class="nav-list__btn">
-                            <p class="nav-list__text-next par__color_Black">Следующая страница</p>
+                        <button id="btn-next" class="nav-list__btn nav-list__btn__next">
+                            <p class="nav-list__text-next par__color_Blue_Grey">Следующая страница</p>
                             <p class="nav-list__text-module par__color_Black"></p>
-                            <span class="material-icons nav-list__icon-right par__color_Black">arrow_forward_ios</span>
+                            <span class="material-icons nav-list__icon-right par__color_Blue_Grey">arrow_forward_ios</span>
                         </button>
                     </div>
-                    `)
-                    console.log(firebaseApi.Signals.tablesLoaded)
+                    `);
+                    const btnPrev = rootList.querySelector("#btn-prev");
+                    const btnNext = rootList.querySelector("#btn-next");
+                    const module = navigationTable.modules.find(obj => {
+                        return obj.forkName == currentPresenterArray[0].forkId.replace(/ø/g, ' ')
+                    });
+                    let i = module.list.findIndex(olc => {
+                        return olc.fork_unitId == currentPresenterArray[0].fork_unitId;
+                    });
+                    if (i > 0) {
+                        btnPrev.querySelector('.nav-list__text-module').textContent = module.list[i - 1].unitName;
+                        btnPrev.addEventListener('click', () => {
+                            firebaseApi.readPresenters(module.list[--i].fork_unitId);
+                        });
+                    } else {
+                        btnPrev.disabled = true;
+                        rootList.querySelector('.nav-list__text-prev').style.gridRow = "2 span";
+                    }
+                    if (i < module.list.length - 1) {
+                        btnNext.querySelector('.nav-list__text-module').textContent = module.list[i + 1].unitName;
+                        btnNext.addEventListener('click', () => {
+                            firebaseApi.readPresenters(module.list[++i].fork_unitId);
+                        });
+                    } else {
+                        btnNext.disabled = true;
+                        rootList.querySelector('.nav-list__text-next').style.gridRow = "2 span";
+                    }
                     break;
                 case firebaseApi.Signals.tablesLoaded:
                     for (const module of navigationTable.modules) {
@@ -157,40 +182,13 @@
                             liElem.insertAdjacentHTML("afterbegin", '<span class="material-icons right-arrow">east</span>');
                             liElem.addEventListener('click', () => {
                                 firebaseApi.readPresenters(module.list[i].fork_unitId);
-                                const rootList = document.getElementById('rootList');
-                                const observer = new MutationObserver((mutationRecords) => {
-                                    if (mutationRecords[mutationRecords.length - 1].addedNodes) {
-                                        const btnPrev = rootList.querySelector("#btn-prev");
-                                        const btnNext = rootList.querySelector("#btn-next");
-                                        if (module.list[i - 1]) {
-                                            btnPrev.querySelector('.nav-list__text-module').textContent = module.list[i - 1].unitName;
-                                            btnPrev.addEventListener('click', () => {
-                                                firebaseApi.readPresenters(module.list[--i].fork_unitId);
-                                            })
-                                        } else {
-                                            btnPrev.disabled = true;
-                                            rootList.querySelector('.nav-list__text-prev').style.gridRow = "2 span";
-                                        }
-                                        if (module.list[i + 1]) {
-                                            btnNext.querySelector('.nav-list__text-module').textContent = module.list[i + 1].unitName;
-                                            btnNext.addEventListener('click', () => {
-                                                firebaseApi.readPresenters(module.list[++i].fork_unitId);
-                                            })
-                                        } else {
-                                            btnNext.disabled = true;
-                                            rootList.querySelector('.nav-list__text-next').style.gridRow = "2 span";
-                                        }
-                                    }
-                                });
-                                observer.observe(rootList, {
-                                    childList: true,
-                                });
                             });
                             ulElem.appendChild(liElem)
                         }
                         listWrapper.appendChild(ulElem);
                         sidebarElem.querySelector('.sidebar__sticky').appendChild(listWrapper)
                     }
+                    break;
             }
         }
     </script>

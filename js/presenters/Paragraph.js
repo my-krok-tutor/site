@@ -65,6 +65,11 @@ class Paragraph {
             elem.classList.add('par__textAlign_' + props.textAlign);
             if (forParagraph) {
                 elem.classList.add('par__color_' + props.textColor);
+                elem.style.marginTop = '4px';
+                elem.style.marginBottom = '4px';
+                if(elem.tagName == 'LI'){
+                    elem.style.marginLeft = '16px';
+                }
             }
             elem.classList.add('par__size_' + props.textSize);
             rootElement.appendChild(elem);

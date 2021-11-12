@@ -137,11 +137,18 @@
 /*#endregion Titlebar*/
 
 /*#region Page*/
+:root {
+    color-scheme: dark;
+}
+
 body {
     background-color: #212121 !important;
 }
 
 .rootList{
     background-color: #212121 !important;
+}
+.nav-list__btn {
+    border: 3px solid #b0bec5;
 }
 /*#endregion Page*/
