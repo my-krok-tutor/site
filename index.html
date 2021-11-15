@@ -42,8 +42,6 @@
     <main class='main'>
         <canvas id='backgroundCanvas' class="canvasBackground"></canvas>
         <div class="sidebar">
-            <div class="sidebar__sticky">
-            </div>
         </div>
         <div class='root-list--wrapper'>
             <div id='rootList' class="rootList"></div>
@@ -93,6 +91,17 @@
         });
         window.addEventListener('resize', (e) => {
             background.drawBackground();
+            const sidebarElem = document.querySelector('.sidebar');
+            if(window.innerWidth < 768){
+                if(sidebarElem.classList.contains('sidebar--mobail')){
+                    sidebarElem.classList.remove('sidebar--mobail')
+                }
+            }
+            else{
+                if(!sidebarElem.classList.contains('sidebar--mobail')){
+                    sidebarElem.classList.add('sidebar--mobail')
+                }
+            }
         }, true);
 
         /**
@@ -150,6 +159,10 @@
                         btnNext.disabled = true;
                         rootList.querySelector('.nav-list__text-next').style.gridRow = "2 span";
                     }
+                    if(window.innerWidth < 768){
+                        sidebarElem.classList.remove('sidebar--mobail')
+                    }
+                    document.body.querySelector('.titleOfPage').innerText = module.list[i].unitName
                     break;
                 case firebaseApi.Signals.tablesLoaded:
                     for (const module of navigationTable.modules) {
@@ -186,7 +199,10 @@
                             ulElem.appendChild(liElem)
                         }
                         listWrapper.appendChild(ulElem);
-                        sidebarElem.querySelector('.sidebar__sticky').appendChild(listWrapper)
+                        sidebarElem.appendChild(listWrapper)
+                    }
+                    if(window.innerWidth > 768){
+                        sidebarElem.classList.add('sidebar--mobail')
                     }
                     break;
             }

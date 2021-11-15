@@ -267,6 +267,10 @@
 
 /*#region Sidebar*/
 .sidebar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+    left: -250px;
+    position: fixed;
     z-index: 2;
     font-family: Roboto, sans-serif;
     -moz-osx-font-smoothing: grayscale;
@@ -278,7 +282,7 @@
     min-width: 200px;
     width: 100%;
     max-width: 250px;
-    min-height: 100%;
+    height: 100%;
 
     margin-right: 20px;
 
@@ -288,18 +292,17 @@
     box-shadow: 1px 1px 8px 0px rgb(34 60 80 / 20%);
     transition: left 0.2s ease;
 }
-
-.sidebar__sticky {
-    position: sticky;
-    top: 48px;
-    width: auto;
-    height: auto;
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 .sidebar.sidebar--mobail {
     left: 0;
+    overflow: auto;
     top: 48px;
+    height: calc(100vh - 48px);
     display: block;
     z-index: 3;
+    position: sticky;
 }
 
 .header__wrapper {
@@ -313,12 +316,14 @@
     flex-shrink: 0;
 }
 .material-icons {
+    user-select: none;
     transition: transform 0.1s ease;
 }
 .material-icons--activ {
     transform: rotate(-180deg);
 }
 .sidebar__header {
+    user-select: none;
     padding: 10px;
     text-transform: uppercase;
     flex: 1;
@@ -331,6 +336,7 @@
 }
 
 .menu__item {
+    user-select: none;
     display: flex;
     padding: 10px;
     line-height: 100%;
@@ -348,10 +354,12 @@
 
 /*#region Titlebar*/
 .btn-title {
-    display: none;
+    user-select: none;
+    display: block;
 }
 
 .btn-title__icon {
+    user-select: none;
     font-size: 32px;
     cursor: pointer;
     margin: 8px;
@@ -360,7 +368,11 @@
 }
 
 .titleOfPage {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+    overflow: hidden;
     margin: 8px;
+    user-select: none;
     font-size: 24px;
     text-overflow: ellipsis;
     flex-grow: 1;
@@ -370,6 +382,10 @@
     font-weight: 400;
     letter-spacing: 0.0178571429em;
     word-break: keep-all;
+    white-space: nowrap;
+}
+.titleOfPage::-webkit-scrollbar {
+    display: none;
 }
 
 .titleBar {
@@ -442,6 +458,7 @@ html {
     background-color: #eceff1;
 }
 .nav-list {
+    word-break: break-word;
     display: flex;
     align-items: stretch;
     justify-content: stretch;
@@ -488,17 +505,21 @@ html {
 /*#endregion Page*/
 
 @media (max-width: 768px) {
+    .sidebar.sidebar--mobail{
+        position: fixed;
+    }
     .sidebar {
         position: fixed;
         left: -250px;
     }
-    .sidebar__sticky {
-        position: static;
-    }
-    .btn-title {
-        display: block;
-    }
     #rootList {
         margin: 0 1rem;
+    }
+    .nav-list__text-prev,
+    .nav-list__text-next{
+        font-size: 15px;
+    }
+    .nav-list__text-module{
+        font-size: 12px;
     }
 }
