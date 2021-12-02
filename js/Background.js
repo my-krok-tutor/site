@@ -30,14 +30,15 @@ class Background{
     }
 
     setDark(){
+        //this.backColor = '#212121';
         this.backColor = '#000a12';
-        this.frontColor = '#37474f';
+        this.frontColor = ['#37474f', '#00838f', '#00695c', '#484848', '#1C656F', '#1C5856', '#40484C', '#24666c', '#405952'];
         this.drawBackground();
     }
 
     setLight(){
         this.backColor = '#eceff1';
-        this.frontColor = '#9ea7aa';
+        this.frontColor = ['#9ea7aa', '#4bacb8', '#4f9a94', '#bcbcbc'];
         this.drawBackground();
     }
 
@@ -50,7 +51,7 @@ class Background{
         const ctx = canvas.getContext('2d');
         ctx.fillStyle = this.backColor;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = this.frontColor;
+        ctx.fillStyle = this.frontColor[0];
         const factor = 46;
         const yPoints = Math.floor((height + factor - factor / 3) / factor);
         for (let x = 0; x < width + factor; x = x + factor) {
@@ -61,9 +62,11 @@ class Background{
                 let rX = this.conv(-8, 8, matrix[i]);
                 let rY = this.conv(-8, 8, matrix[i + 1]);
                 let rR = this.conv(-0.75, 0.75, matrix[i + 2]);
+                let rC = Math.floor(this.conv(0, this.frontColor.length - 1, matrix[i + 2]));
                 let rN = Math.floor(this.conv(Background.images.length - 1, 0, matrix[i + 3]));
                 let p = new Path2D(Background.images[rN]);
                 ctx.setTransform(1.05, rR, -rR, 1.05, x + rX, y + rY);
+                ctx.fillStyle = this.frontColor[rC];
                 ctx.fill(p);
                 i = i + 4;
             }
