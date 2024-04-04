@@ -1,0 +1,21 @@
+{
+    "iOS": [
+        {
+            "native": "1.0",
+            "portable": 1,
+            "url": "https://dl.dropboxusercontent.com/scl/fi/fstj70mlgoz7wi2hfndom/stable_12_09.zip?rlkey=14shp555j911hedqvi0kog8wh&dl=0"
+        },
+        {
+            "native": "1.2",
+            "portable": 3,
+            "url": "https://core.potesmanu.one/api/download/test/beta_03.04.24.easf"
+        }
+    ],
+    "android": [
+        {
+            "native": "5.3.1",
+            "portable": 1,
+            "url": ""
+        }
+    ]
+}
