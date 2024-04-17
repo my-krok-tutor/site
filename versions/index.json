@@ -13,9 +13,16 @@
     ],
     "android": [
         {
-            "native": "5.3.1",
+            "native": "5.3.2",
+            "portable": 2,
+            "url": "https://core.potesmanu.one/api/download/test/android_courses_17.04.24.apk"
+        }
+    ],
+    "insides": [
+        {
+            "native": "5.3.0",
             "portable": 1,
-            "url": ""
+            "url": "https://kutikov.github.io/my-successful-krok/pdfs/my_krok_insides.apk"
         }
     ]
 }
