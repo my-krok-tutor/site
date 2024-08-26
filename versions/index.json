@@ -8,10 +8,15 @@
         {
             "native": "2.0",
             "portable": 10,
-            "url": "https://core.potesmanu.one/api/download/test/beta_03.04.24.easf"
+            "url": "https://my-krok-tutor.github.io/site/versions/ios_stable_25.08.24.easf"
         }
     ],
     "android": [
+        {
+            "native": "6.0.0",
+            "portable": 3,
+            "url": "https://my-krok-tutor.github.io/site/versions/android_courses_25.08.24.apk"
+        },
         {
             "native": "5.3.2",
             "portable": 2,
@@ -19,6 +24,11 @@
         }
     ],
     "insides": [
+        {
+            "native": "6.0.0",
+            "portable": 3,
+            "url": "https://my-krok-tutor.github.io/site/versions/android_insides_25.08.24.apk"
+        },
         {
             "native": "5.3.0",
             "portable": 1,
