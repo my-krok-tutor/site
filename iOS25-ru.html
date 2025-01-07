@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Нам нужна Ваша помощь!</title>
+    <link rel="stylesheet" href="css/iOS.css"/>
+  </head>
+  <body>
+    <header>
+        <img alt="logo" src="res/ios_logo.png"/>
+        <h3>Мой успешный КРОК</h3>
+        <h4>Приложение для iOS (c) Damir A. Kutikov, 2022-2025</h4>
+    </header>
+    <main>
+        <img alt="image" class="template" src="res/header-d.webp"/>
+        <h1>Нам нужна Ваша помощь!</h1>
+        <img class="screen regular" alt="screen" src="res/screen-d.webp"/>
+        <section>
+            <h5>В чем вопрос?</h5>
+            <p>Для публикации приложений в AppStore а также их поддержки <b>ежегодно корпорация Apple собирает с каждого разработчика плату за подписку в размере 99 долларов США</b>. <i>Обоснование таких сборов - поддержка экосистемы компании.</i>  Приводим скрин с <a href="https://developer.apple.com">кабинета разработчика</a> Apple, в котором указаны и дата и цена подписки. <br/><br/> 
+                <img class="screen mobile" alt="screen" src="res/screen-d.webp"/>
+                В случае если разработчик не вносит оплату, Apple удаляет из AppStore и само приложение и все данные разработчика. <b>Более того, установленное на Вашем устройстве приложение перестанет работать и все данные будут полностью утеряны, если подписка не будет вовремя (до 17.02.2025) оплачена.</b></p>
+        </section>
+        <section>
+            <h5>Как Вы можете помочь?</h5>
+            <p>Мы как разработчики на данный момент не можем покрыть сумму взноса без ущерба для себя. <b>За оставшееся дни нам необходимо собрать пожертвования, чтобы как-то покрыть сумму взноса.</b> Поскольку Вы как пользователь этого приложения заинтересованы в его сохранности не меньше нас, <b>мы обращаемся к Вам за финансовой поддержкой</b> для оплаты подписки. <i>Никакие другие сборы на данный момент нам не нужны.</i></p>
+        </section>
+        <section>
+            <h5>Какая сумма и как перечислять?</h5>
+            <p>Общая сумма на старте: <b>4200 грн</b>, примерно 99 долларов США по текущему курсу. Любой Ваш взнос поможет общему делу: хоть 10 грн, хоть 200 грн. <b>Для перечисления воспользуйтесь кнопкой ниже</b>, это абсолютно безопасно и полностью анонимно. <i>Мы опубликуем детальный отчет о переводе всех средств в нашем телеграмм чате.</i></p>
+        </section>
+        <a class="btn" type="button" href="https://next.privat24.ua/send/2nyw3">Пожертвовать на подписку</a>
+    </main>
+    <footer>
+        <a href="https://kutikov.github.io/my-successful-krok">Официальный сайт</a>
+        <a href="https://t.me/my_successful_krok_2021">Телеграм чат</a>
+        <p>Damir A. Kutikov (c) 2025</pз>
+    </footer>
+    <script type="text/javascript">
+        function recolor(isDark) {
+            document.querySelectorAll('.screen').forEach(x => x.src = `res/screen-${isDark ? 'd' : 'l'}.webp`);
+            document.querySelector('.template').src = `res/header-${isDark ? 'd' : 'l'}.webp`;
+        }
+        recolor(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => recolor(event.matches));
+    </script>
+  </body>
+</html>

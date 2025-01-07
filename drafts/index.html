@@ -5,6 +5,7 @@
   <meta charset="utf-8">
 
   <title>My KROK Tutor index</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="My KROK Tutor index">
   <meta name="author" content="My KROK Tutor">
 
@@ -33,7 +34,7 @@
   <input type='radio' name='modeRadio' id='novaposhta'>Nova poshta Warehouse</input>
   <input type='radio' name='modeRadio' id='address'>Carier to home</input>
   <select id='citySelect'></select>
-  <button onclick="getNextNumber()">Click me</button>
+  <button onclick="getNextNumber()" type="button">Click me</button>
   <script>
     document.getElementById('novaposhta').addEventListener('click', function(){
         mode = MAPMODE.NOVA_POSHTA;

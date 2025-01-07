@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>We need your help!</title>
+    <link rel="stylesheet" href="css/iOS.css"/>
+  </head>
+  <body>
+    <header>
+        <img alt="logo" src="res/ios_logo.png"/>
+        <h3>My successful KROK</h3>
+        <h4>iOS App (c) Damir A. Kutikov, 2022-2025</h4>
+    </header>
+    <main>
+        <img alt="image" class="template" src="res/header-d.webp"/>
+        <h1>We need your help!</h1>
+        <img class="screen regular" alt="screen" src="res/screen-d.webp"/>
+        <section>
+            <h5>What is the problem?</h5>
+            <p>To publish applications in the AppStore and support them, <b>Apple collects a subscription fee of $99 annually from each developer</b>. <i>The rationale for such fees is to support the company's ecosystem.</i> Here is a screenshot from <a href="https://developer.apple.com">Apple's developer account</a>, which shows both the subscription date and price. <br/><br/> 
+                <img class="screen mobile" alt="screen" src="res/screen-d.webp"/>
+                If the developer does not make the payment, Apple deletes the application itself and all developer data from the AppStore. <b>Moreover, the application installed on your device will stop working and all data will be completely lost if the subscription is not paid on time (before 02/17/2025).</b></p>
+        </section>
+        <section>
+            <h5>Как Вы можете помочь?</h5>
+            <p>We, as developers, are currently unable to cover the contribution amount without harming ourselves. <b>We need to collect donations in the remaining days to somehow cover the contribution amount.</b> Since you, as a user of this application, are interested in its preservation no less than we are, <b>we are asking you for financial support</b> to pay for the subscription. <i>We do not need any other fees at the moment.</i></p>
+        </section>
+        <section>
+            <h5>What amount and how to transfer?</h5>
+            <p>Total amount at the start: <b>4200 UAH</b>, approximately 99 US dollars at the current rate. Any contribution from you will help the common cause: at least 10 UAH, at least 200 UAH. <b>To transfer, use the button below</b>, it is absolutely safe and completely anonymous. <i>We will publish a detailed report on the transfer of all funds in our telegram chat.</i></p>
+        </section>
+        <a class="btn" type="button" href="https://next.privat24.ua/send/2nyw3">Donate for a subscription</a>
+    </main>
+    <footer>
+        <a href="https://kutikov.github.io/my-successful-krok">Official website</a>
+        <a href="https://t.me/my_successful_krok_2021">Telegram chat</a>
+        <p>Damir A. Kutikov (c) 2025</pз>
+    </footer>
+    <script type="text/javascript">
+        function recolor(isDark) {
+            document.querySelectorAll('.screen').forEach(x => x.src = `res/screen-${isDark ? 'd' : 'l'}.webp`);
+            document.querySelector('.template').src = `res/header-${isDark ? 'd' : 'l'}.webp`;
+        }
+        recolor(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => recolor(event.matches));
+    </script>
+  </body>
+</html>

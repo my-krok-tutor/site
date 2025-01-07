@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Нам потрібна Ваша допомога!</title>
+    <link rel="stylesheet" href="css/iOS.css"/>
+  </head>
+  <body>
+    <header>
+        <img alt="logo" src="res/ios_logo.png"/>
+        <h3>Мій успішний КРОК</h3>
+        <h4>Додаток для iOS (c) Damir A. Kutikov, 2022-2025</h4>
+    </header>
+    <main>
+        <img alt="image" class="template" src="res/header-d.webp"/>
+        <h1>Нам потрібна Ваша допомога!</h1>
+        <img class="screen regular" alt="screen" src="res/screen-d.webp"/>
+        <section>
+            <h5>У чому питання?</h5>
+            <p>Для публікації додатків у AppStore і їх підтримки <b>щорічно корпорація Apple збирає з кожного розробника плату за передплату в розмірі 99 доларів США</b>. <i>Обґрунтування таких зборів - підтримка екосистеми компанії.</i> Наводимо скрін з <a href="https://developer.apple.com">кабінету розробника</a> Apple, в якому вказано і дату і ціну передплати. <br/><br/> 
+                <img class="screen mobile" alt="screen" src="res/screen-d.webp"/>
+                Якщо розробник не вносить оплату, Apple видаляє з AppStore і сам додаток і всі дані розробника. <b>Більше того, встановлений на Вашому пристрої додаток перестане працювати і всі дані будуть повністю втрачені, якщо передплата не буде вчасно (до 17.02.2025) оплачена.</b></p>
+        </section>
+        <section>
+            <h5>Як Ви можете допомогти?</h5>
+            <p>Ми, як розробники, на даний момент не можемо покрити суму внеску без шкоди для себе. <b>За дні, що залишилися, нам необхідно зібрати пожертвування, щоб якось покрити суму внеску.</b> Оскільки Ви як користувач цієї програми зацікавлені в його збереженні не менше за нас, <b>ми звертаємося до Вас за фінансовою підтримкою</b> для оплати підписки. <i>Жодні інші збори на даний момент нам не потрібні.</i></p>
+        </section>
+        <section>
+            <h5>Яка сума та як перераховувати?</h5>
+            <p>Загальна сума на старті: <b>4200 грн</b>, приблизно 99 доларів США за поточним курсом. Будь-який Ваш внесок допоможе спільній справі: хоч 10 грн, хоч 200 грн. <b>Для перерахування скористайтеся кнопкою нижче</b>, це абсолютно безпечно та повністю анонімно. <i>Ми опублікуємо детальний звіт про переказ усіх коштів у нашому телеграмі чаті.</i></p>
+        </section>
+        <a class="btn" type="button" href="https://next.privat24.ua/send/2nyw3">Пожертвувати на підписку</a>
+    </main>
+    <footer>
+        <a href="https://kutikov.github.io/my-successful-krok">Офіційний сайт</a>
+        <a href="https://t.me/my_successful_krok_2021">Телеграм чат</a>
+        <p>Damir A. Kutikov (c) 2025</pз>
+    </footer>
+    <script type="text/javascript">
+        function recolor(isDark) {
+            document.querySelectorAll('.screen').forEach(x => x.src = `res/screen-${isDark ? 'd' : 'l'}.webp`);
+            document.querySelector('.template').src = `res/header-${isDark ? 'd' : 'l'}.webp`;
+        }
+        recolor(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => recolor(event.matches));
+    </script>
+  </body>
+</html>

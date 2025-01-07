@@ -1,0 +1,239 @@
+:root{
+    --accent: #045B3F;
+    --secondary: #333;
+    --main: #111;
+    --primary: #000;
+    --back: #f0f0f0;
+    --footer: #ddd;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root{
+        --accent: #3990FF;
+        --secondary: #bbb;
+        --main: #eee;
+        --primary: #fff;
+        --back: #09090D;
+        --footer: #131318;
+    }
+}
+
+::-webkit-scrollbar{
+    width: 0;
+}
+
+a {
+    color: var(--accent);
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+body {
+    background: var(--back);
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 70ch 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100dvh;
+    width: 100dvw;
+    overflow: hidden;
+    font-family: 'SF Pro Display', sans-serif;
+}
+
+header {
+    grid-column: 2;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 0.5rem;
+    row-gap: 0;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+header > img {
+    height: 3.5rem;
+    grid-row: 1 / -1;
+}
+
+header > h3 {
+    color: var(--primary);
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+header > h4 {
+    color: var(--secondary);
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+main {
+    margin: 0 0.5rem;
+    grid-column: 2;
+    grid-row: 2;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+main > img {
+    width: 90%;
+    margin: 0 5% 0 5%;
+}
+
+main > h1 {
+    color: var(--primary);
+    font-size: 2rem;
+    margin: 1.0rem 0 1.5rem 0;
+}
+
+footer {
+    background-color: var(--footer);
+    border-radius: 1rem 1rem 0 0;
+    grid-column: 2;
+    grid-row: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 0.5rem;
+}
+
+footer > p, footer > a {
+    margin: 0.25rem;
+    color: var(--main);
+}
+
+footer > a {
+    color: var(--accent);
+}
+
+section > p {
+    color: var(--main);
+    line-height: 1.3rem;
+    text-align: justify;
+    margin: 1rem 0;
+}
+
+section > h5 {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    text-align: justify;
+    margin: 0;
+    color: var(--accent)
+}
+
+.screen {
+    border-radius: 1rem;
+}
+
+.screen.regular {
+    width: 52%;
+    float: right;
+    margin: 0  0 0 1rem;
+}
+
+.screen.mobile {
+    width: 100%;
+    margin: 0;
+    display: none;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    text-align: center;
+    display: block;
+    width: calc(100% - 1 rem);
+    border-radius: 0.5rem;
+    background-color: var(--accent);
+    color: var(--back);
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn:hover{
+    opacity: 0.9;
+}
+
+@media (max-width: 400px) {
+    body {
+        grid-template-columns: 0.5rem 1fr 0.5rem;
+        grid-template-rows: auto 1fr auto;
+        height: 100dvh;
+        width: 100dvw;
+        font-size: 0.75rem;
+    }
+
+    header {
+        column-gap: 0.35rem;
+        margin: 0.35rem 0 0.35rem 0;
+    }
+
+    header > img {
+        height: 2.5rem;
+    }
+
+    header > h3 {
+        font-size: 1.1rem;
+    }
+
+    header > h4 {
+        font-size: 0.7rem;
+    }
+
+    main {
+        margin: 0 0.5rem;
+    }
+
+    main > img {
+        width: 100%;
+        margin: 0;
+    }
+
+    main > h1 {
+        font-size: 1.5rem;
+        margin: 0.8rem 0 0.8rem 0;
+    }
+
+    footer {
+        border-radius: 1rem 1rem 0 0;
+        padding: 0.5rem;
+    }
+
+    footer > p, footer > a {
+        margin: 0.25rem;
+    }
+
+    section > p {
+        line-height: 1.3rem;
+        margin: 1rem 0;
+    }
+
+    section > h5 {
+        font-size: 1.05rem;
+        line-height: 1.35rem;
+    }
+
+    .screen.regular {
+        display: none;
+    }
+
+    .screen.mobile {
+        display: block;
+    }
+
+    .btn {
+        width: calc(100% - 1rem);
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+}
