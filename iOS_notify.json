@@ -1,0 +1,40 @@
+[
+	{
+		"danger": false, 
+		"text": {
+			"uk": "Детальні пояснення до тестів та живе спілкування щодня",
+			"ru": "Подробные пояснения к тестам и живое общение каждый день",
+			"en": "Detailed explanations of tests and live communication every day"
+		}, 
+		"url": {
+			"en": "https://t.me/my_successful_krok_2021"
+		}, 
+		"caption": {
+			"uk": "Подивится",
+			"ru": "Посмотреть",
+			"en": "View"
+		}, 
+		"id": 9, 
+		"showed": false
+	},
+	{
+		"danger": true, 
+		"text": {
+			"uk": "Додаток потребує Вашої підтримки!",
+			"ru": "Приложение нуждается в Вашей поддержке!",
+			"en": "This app needs your support!"
+		}, 
+		"url": {
+			"en": "https://my-krok-tutor.github.io/site/iOS25-en.html",
+			"uk": "https://my-krok-tutor.github.io/site/iOS25-uk.html",
+			"ru": "https://my-krok-tutor.github.io/site/iOS25-ru.html"
+		}, 
+		"caption": {
+			"uk": "Деталі",
+			"ru": "Детали",
+			"en": "Details"
+		}, 
+		"id": 10, 
+		"showed": true
+	}
+]
