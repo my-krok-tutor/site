@@ -36,5 +36,15 @@
 		}, 
 		"id": 10, 
 		"showed": true
+	},
+	{
+		"danger": false, 
+		"text": {
+			"uk": "Пояснення тестів та ключові слова у новому розділі: Ще > Мої КРОК розбори!",
+			"ru": "Пояснения тестов и ключевые слова в новом разделе: Еще > Мои КРОК разборы!",
+			"en": "Test explanations and keywords in new section: More > My KROK analyses!"
+		}, 
+		"id": 11, 
+		"showed": false
 	}
 ]
