@@ -7,8 +7,13 @@
         },
         {
             "native": "2.0",
-            "portable": 16,
-            "url": "https://my-krok-tutor.github.io/site/versions/ios_stable_03.04.25.easf"
+            "portable": 17,
+            "url": "https://my-krok-tutor.github.io/site/versions/ios_stable_27.12.25.easf"
+        },
+        {
+            "native": "2.1",
+            "portable": 17,
+            "url": "https://my-krok-tutor.github.io/site/versions/ios_stable_27.12.25.easf"
         }
     ],
     "android": [
